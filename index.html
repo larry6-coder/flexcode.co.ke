@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlexCode – Websites &amp; Software, Eldoret Kenya</title>
-<meta name="description" content="Business websites, school systems and custom software built in Eldoret. Launch in 7 days from KES 15,000.">
+<title>FlexCode – Websites &amp; Software, Nairobi Kenya</title>
+<meta name="description" content="Business websites, school systems and custom software built in Nairobi. Launch in 7 days from KES 15,000.">
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
@@ -117,10 +117,10 @@
 const SUPABASE_URL = "https://dwvggxsvkkhfjahoglzc.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_09sTiT0vj6_XkvKiR8VaEg_kdqDRm7i";
 // ====== 2. EMAILJS (emailjs.com → Account / Email Services / Email Templates) ======
-const EMAILJS_PUBLIC_KEY = "YOUR-EMAILJS-PUBLIC-KEY";
-const EMAILJS_SERVICE_ID = "YOUR-SERVICE-ID";
+const EMAILJS_PUBLIC_KEY = "Io58bpaXMwPMEw7T6";
+const EMAILJS_SERVICE_ID = "service_9177ffd";
 const EMAILJS_ADMIN_TEMPLATE = "template_admin";   // To: your inbox. Uses {{name}} {{email}} {{phone}} {{business_type}} {{message}}
-const EMAILJS_REPLY_TEMPLATE = "template_reply";   // To: {{to_email}}. Uses {{name}}
+const EMAILJS_REPLY_TEMPLATE = "template_obmq2mq";   // To: {{to_email}}. Uses {{name}}
 // ====================================================================
 const $ = (s) => document.querySelector(s);
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -199,7 +199,7 @@ const cardA = "rounded-xl bg-white p-5 shadow-sm";
 function route() {
   const adm = location.hash.startsWith("#/admin");
   $("#site").classList.toggle("hidden", adm); A.classList.toggle("hidden", !adm);
-  document.title = adm ? "FlexCode Admin" : "FlexCode – Websites & Software, Eldoret Kenya";
+  document.title = adm ? "FlexCode Admin" : "FlexCode – Websites & Software, Nairobu Kenya";
   if (adm) adminRoute();
 }
 let ME = "";
