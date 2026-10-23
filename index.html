@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!-- FlexCode all-in-one: public site + hidden admin.
+     Public site:  index.html
+     Admin panel:  index.html#/admin   (not linked anywhere on the public site)
+     Setup: run setup.sql in Supabase, then set the Supabase and EmailJS values below. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlexCode – Websites &amp; Software, Eldoret Kenya</title>
+<meta name="description" content="Business websites, school systems and custom software built in Eldoret. Launch in 7 days from KES 15,000.">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+<script>tailwind.config={theme:{extend:{colors:{brand:'#0A66FF'}}}}</script>
+<style>html{scroll-behavior:smooth}.rv{opacity:0;transform:translateY(24px);transition:.6s}.rv.in{opacity:1;transform:none}@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}</style>
+</head>
+<body class="bg-black text-white antialiased">
+<div id="site">
+
+<nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#08080a]/70 backdrop-blur-xl">
+  <div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
+    <a href="#home" class="flex items-center gap-3 text-3xl font-bold tracking-tight"><span class="grid h-10 w-10 place-items-center rounded-lg border-2 border-brand font-mono text-sm text-brand">&lt;F/&gt;</span><span>Flex<span class="text-brand">Code</span></span></a>
+    <div id="links" class="hidden gap-9 md:flex"></div>
+    <a href="#contact" class="hidden rounded-lg bg-brand px-6 py-3 font-semibold shadow-[0_0_24px_-6px_#0A66FF] md:block">Book a Call</a>
+    <button id="burger" class="text-2xl md:hidden" aria-label="Menu">☰</button>
+  </div>
+  <div id="drawer" class="fixed right-0 top-20 h-screen w-64 translate-x-full border-l border-white/10 bg-black p-6 transition md:hidden"></div>
+</nav>
+
+<section id="home" class="relative overflow-hidden px-5 pb-24 pt-40">
+  <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(55% 50% at 78% 45%,rgba(10,102,255,.3),transparent),radial-gradient(35% 35% at 8% 95%,rgba(10,102,255,.14),transparent)"></div>
+  <div class="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
+    <div class="rv">
+      <span class="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-3 py-1 text-sm"><span class="h-2 w-2 rounded-full bg-green-400"></span>Available for new projects</span>
+      <h1 class="mt-6 text-5xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">We Build Websites That Build Your <span class="text-brand">Business</span></h1>
+      <p class="mt-6 max-w-lg text-xl leading-relaxed text-white/70">Custom, fast, performance-driven websites for Kenyan startups and growing brands. Designed to convert, built to scale.</p>
+      <div class="mt-9 flex flex-wrap gap-3"><a href="#contact" class="rounded-lg bg-brand px-8 py-4 text-lg font-semibold shadow-[0_0_30px_-6px_#0A66FF]">Start Your Project →</a><a href="#projects" class="rounded-lg border border-white/20 px-8 py-4 text-lg font-semibold hover:bg-white/10">View Our Work</a></div>
+      <div class="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/70"><span>✓ Trusted by 50+ founders</span><span><span class="text-yellow-400">★★★★★</span> 4.9/5 average rating</span><span>⚡ Launched in 7 days</span></div>
+    </div>
+    <div class="rv rounded-2xl border border-brand/60 bg-[#0c0e14] shadow-[0_0_70px_-8px_#0A66FF]">
+      <div class="relative flex items-center border-b border-white/10 px-5 py-4"><span class="flex gap-2"><i class="h-3.5 w-3.5 rounded-full bg-red-500"></i><i class="h-3.5 w-3.5 rounded-full bg-yellow-400"></i><i class="h-3.5 w-3.5 rounded-full bg-green-500"></i></span><span class="absolute inset-x-0 text-center text-sm text-white/50">index.tsx</span></div>
+      <pre class="overflow-x-auto p-6 font-mono text-[15px] leading-8 text-sky-200">export default function <span class="text-yellow-200">Hero</span>() {
+  return (
+    &lt;section className=<span class="text-emerald-300">"hero"</span>&gt;
+      &lt;h1&gt;Grow your business online&lt;/h1&gt;
+      &lt;p&gt;Fast · Mobile-first · M-Pesa ready&lt;/p&gt;
+      &lt;Button&gt;Launch Project&lt;/Button&gt;
+    &lt;/section&gt;
+  );
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="px-5 py-24"><div class="mx-auto max-w-6xl">
+  <h2 class="text-3xl font-bold md:text-4xl">Why Choose Us</h2>
+  <div id="why" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div></div></section>
+
+<section id="services" class="px-5 py-24"><div class="mx-auto max-w-6xl text-center">
+  <h2 class="text-4xl font-extrabold md:text-5xl">Our Services</h2>
+  <p class="mt-3 text-white/60">Built for growth — reliable, scalable, and secure solutions by FlexCode</p>
+  <div id="services-grid" class="mt-14 grid gap-6 md:grid-cols-3"></div>
+  <p class="mt-12 text-sm text-white/40">Scalable · Secure · 24/7 Support</p></div></section>
+
+<section id="projects" class="px-5 py-24"><div class="mx-auto max-w-6xl">
+  <h2 class="text-3xl font-bold md:text-4xl">Recent Projects</h2>
+  <div id="filters" class="mt-6 flex gap-2"></div>
+  <div id="project-grid" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div></div></section>
+
+<section class="px-5 py-24"><div class="mx-auto max-w-6xl">
+  <h2 class="text-3xl font-bold md:text-4xl">Our Process</h2>
+  <div id="steps" class="relative mt-12 grid gap-8 md:grid-cols-4"><div class="absolute left-0 right-0 top-6 hidden h-px bg-brand/60 md:block"></div></div></div></section>
+
+<section id="pricing" class="px-5 py-24"><div class="mx-auto max-w-6xl text-center">
+  <h2 class="text-4xl font-extrabold md:text-5xl">Choose the plan that fits your work</h2>
+  <p class="mt-3 text-white/60">Simple, transparent pricing in Kenya shillings. Start today, upgrade any time.</p>
+  <div id="pricing-grid" class="mt-16 grid gap-6 text-left md:grid-cols-3"></div>
+  <p class="mt-10 text-sm text-white/40">50% to start · Balance on launch · M-Pesa and bank transfer accepted</p></div></section>
+
+<section class="px-5 py-24"><div id="reviews" class="mx-auto grid max-w-6xl gap-5 md:grid-cols-3"></div></section>
+
+<section id="contact" class="px-5 py-24" style="background:linear-gradient(135deg,#050a2e,#101a6b 55%,#050510)"><div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-2">
+  <div>
+    <h2 class="text-5xl font-extrabold">Get in touch</h2>
+    <p class="mt-5 max-w-md text-lg leading-relaxed text-indigo-200">Have a project in mind or want to learn more about our services? We'd love to hear from you. Reach out and our team will respond within 24 hours.</p>
+    <div class="mt-10 space-y-6">
+      <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-indigo-500">✉</span><div><p class="text-indigo-200">Email</p><p class="text-xl font-bold">hello@flexcode.co.ke</p></div></div>
+      <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-indigo-500">✆</span><div><p class="text-indigo-200">Phone / WhatsApp</p><p class="text-xl font-bold">+254 700 000 000</p></div></div>
+      <div class="flex items-center gap-4"><span class="grid h-12 w-12 place-items-center rounded-full bg-indigo-500">⌖</span><div><p class="text-indigo-200">Location</p><p class="text-xl font-bold">Eldoret, Kenya</p></div></div>
+    </div>
+    <div class="mt-10 flex gap-3 text-sm text-indigo-200"><span class="grid h-10 w-10 place-items-center rounded-lg border border-white/20">WA</span><span class="grid h-10 w-10 place-items-center rounded-lg border border-white/20">f</span><span class="grid h-10 w-10 place-items-center rounded-lg border border-white/20">X</span></div>
+  </div>
+  <form id="form" class="space-y-4 rounded-2xl bg-white p-8 text-gray-900 shadow-2xl">
+    <h3 class="text-4xl font-extrabold">Contact Form</h3><p class="text-gray-600">Fill out the form below and we'll get back to you.</p>
+    <div class="grid gap-4 sm:grid-cols-2"><label class="block font-bold">Name<input name="name" required minlength="2" placeholder="Your full name" class="inp mt-1 font-normal"></label><label class="block font-bold">Email<input name="email" type="email" required placeholder="your@email.com" class="inp mt-1 font-normal"></label></div>
+    <label class="block font-bold">Phone<input name="phone" required minlength="7" placeholder="0712 345 678" class="inp mt-1 font-normal"></label>
+    <label class="flex items-center gap-4 font-bold"><span class="shrink-0">Business Type</span><select name="business_type" required class="inp font-normal"><option value="" disabled selected>Select business type</option><option>Shop / Retail</option><option>School</option><option>Hotel / Restaurant</option><option>Farm / Agribusiness</option><option>Clinic / Pharmacy</option><option>Other</option></select></label>
+    <label class="block font-bold">Message<textarea name="message" required minlength="10" rows="3" placeholder="Tell us about your project…" class="inp mt-1 font-normal"></textarea></label>
+    <input name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+    <button id="send" class="w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 py-3.5 text-lg font-bold text-white shadow-lg disabled:opacity-60">Send Message</button>
+    <p id="status" class="text-center text-sm"></p>
+    <p class="text-center text-sm text-gray-600">* We respect your privacy. No spam, ever.</p>
+  </form>
+</div></section>
+
+<footer class="border-t border-white/10 px-5 py-10"><div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
+  <span class="text-lg font-bold">Flex<span class="text-brand">Code</span></span>
+  <div id="flinks" class="flex gap-5 text-sm capitalize text-white/60"></div>
+  <p class="text-xs text-white/40">© <span id="yr"></span> FlexCode, Eldoret. All rights reserved.</p></div></footer>
+</div>
+<div id="admin" class="hidden"></div>
+<div id="portal" class="hidden"></div>
+<div id="paymodal"></div>
+
+<style>.inp{width:100%;border:1px solid #d1d5db;background:#f9fafb;border-radius:.5rem;padding:.625rem .75rem;outline:none}.inp:focus{border-color:#0A66FF}.pin{width:100%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);border-radius:.5rem;padding:.7rem .9rem;outline:none;color:#fff}.pin:focus{border-color:#0A66FF}</style>
+<script>
+// ====== 1. PASTE YOUR SUPABASE VALUES (Project Settings → API) ======
+const SUPABASE_URL = "https://dwvggxsvkkhfjahoglzc.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_09sTiT0vj6_XkvKiR8VaEg_kdqDRm7i"; // publishable key: safe to be public
+// ====== 2. EMAILJS (emailjs.com → Account / Email Services / Email Templates) ======
+const EMAILJS_PUBLIC_KEY = "YOUR-EMAILJS-PUBLIC-KEY";
+const EMAILJS_SERVICE_ID = "YOUR-SERVICE-ID";
+const EMAILJS_ADMIN_TEMPLATE = "template_admin";   // To: your inbox. Uses {{name}} {{email}} {{phone}} {{business_type}} {{message}}
+const EMAILJS_REPLY_TEMPLATE = "template_reply";   // To: {{to_email}}. Uses {{name}}
+const MPESA_TILL = "123456";            // your M-Pesa Buy Goods till number (clients pay here)
+const WHATSAPP = "254700000000";        // your WhatsApp number, country code first, no + or spaces
+// ====================================================================
+const $ = (s) => document.querySelector(s);
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const links = ["home","about","services","projects","pricing","contact"], NAV = ["services","projects","about","pricing","contact"], LB = {services:"Services",projects:"Work",about:"About",pricing:"Pricing",contact:"Contact"};
+$("#links").innerHTML = NAV.map(l=>`<a href="#${l}" data-l="${l}" class="nav text-[15px] text-white/70 hover:text-white">${LB[l]}</a>`).join("");
+$("#drawer").innerHTML = NAV.map(l=>`<a href="#${l}" class="block py-3 text-white/80">${LB[l]}</a>`).join("")+`<a href="#contact" class="mt-4 block rounded-lg bg-brand py-3 text-center font-semibold">Book a Call</a>`;
+$("#flinks").innerHTML = NAV.map(l=>`<a href="#${l}">${LB[l]}</a>`).join("");
+$("#yr").textContent = new Date().getFullYear();
+$("#burger").onclick = () => $("#drawer").classList.toggle("translate-x-full");
+$("#drawer").onclick = () => $("#drawer").classList.add("translate-x-full");
+
+const card = "rv rounded-2xl border border-white/10 bg-white/[0.03] p-6";
+$("#why").innerHTML = [["⚡","Launch in 7 Days","Your site is live within a week."],["💰","Affordable From 15K","Fair KES pricing for local businesses."],["🧩","Modern Tech","Fast, secure and easy to update."],["💬","24/7 WhatsApp Support","Talk to a real developer any time."]].map(([i,t,d])=>`<div class="${card}"><div class="text-2xl">${i}</div><h3 class="mt-4 font-semibold">${t}</h3><p class="mt-1 text-sm text-white/60">${d}</p></div>`).join("");
+const SV=[['<circle cx="32" cy="32" r="22"/><path d="M12 22q20 8 40 0M12 42q20-8 40 0M25 27l-6 5 6 5M39 27l6 5-6 5M35 25l-6 14"/>',"Business Websites","Responsive, fast, and SEO-ready websites tailored to your brand. Modern design, optimized performance, and seamless user experience."],['<path d="M6 22L28 12l22 10-22 10zM14 28v10q14 8 28 0V28"/><rect x="36" y="32" width="22" height="16" rx="2"/><path d="M47 48v6M41 56h12"/>',"School Systems","Complete management platforms for schools. Student records, attendance, grading, and communication tools in one system."],['<circle cx="24" cy="26" r="8"/><path d="M24 8v6M24 38v6M6 26h6M36 26h6M11 13l4 4M33 35l4 4M37 13l-4 4M11 39l4-4"/><rect x="28" y="32" width="30" height="22" rx="3"/><path d="M28 40h30M34 48h8"/>',"Business Software","Custom software solutions to automate operations, streamline workflows, and boost efficiency for your business."]];
+$("#services-grid").innerHTML=SV.map(([p,t,d])=>`<div class="rv rounded-3xl border border-white/10 bg-[#0d0e12] p-8 text-center shadow-[0_0_50px_-24px_#0A66FF]"><div class="mx-auto grid h-28 w-28 place-items-center rounded-3xl border border-brand/60 bg-brand/10 shadow-[0_0_36px_-6px_#0A66FF]"><svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#0A66FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${p}</svg></div><h3 class="mt-8 text-2xl font-bold">${t}</h3><p class="mt-3 text-white/70">${d}</p></div>`).join("");
+$("#steps").insertAdjacentHTML("beforeend", ["Talk","Design","Develop","Launch"].map((s,i)=>`<div class="relative text-center"><div class="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand font-bold shadow-[0_0_20px_#0A66FF]">${i+1}</div><p class="mt-4 font-semibold">${s}</p></div>`).join(""));
+$("#reviews").innerHTML = [["Grace Chebet","Owner, Chebet Hardware","Our shop got orders on WhatsApp within the first week of launch."],["Mr. Kiprop","Principal, Kapsoya Academy","Fee balances and report cards now take minutes, not days."],["Faith Wanjiru","Manager, Eldoret Guest House","Bookings are up and the site loads fast on mobile data."]].map(([n,r,q])=>`<div class="${card}"><p class="text-yellow-400">★★★★★</p><p class="mt-3 text-white/80">“${q}”</p><p class="mt-4 text-sm font-semibold">${n}</p><p class="text-xs text-white/50">${r}</p></div>`).join("");
+
+const projects=[["Rift Valley Hardware","Business"],["Eldoret Fresh Dairy","Business"],["Uasin Gishu Hotel","Business"],["Kapsoya Academy","School"],["Langas Primary Portal","School"],["Moi Avenue Pharmacy","Business"]];
+function drawProjects(f="All"){
+  $("#filters").innerHTML=["All","Business","School"].map(c=>`<button data-f="${c}" class="rounded-full px-4 py-1.5 text-sm ${c===f?"bg-brand":"border border-white/20 text-white/70"}">${c}</button>`).join("");
+  $("#project-grid").innerHTML=projects.filter(p=>f==="All"||p[1]===f).map(([n,c])=>`<div class="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-brand/25 to-black p-5"><p class="text-xs text-white/60">${c}</p><h3 class="mt-1 text-lg font-semibold">${n}</h3><div class="absolute inset-0 grid place-items-center bg-black/70 opacity-0 transition group-hover:opacity-100"><a href="#contact" class="rounded-lg bg-brand px-4 py-2 text-sm font-semibold">View Live</a></div></div>`).join("");
+  document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>drawProjects(b.dataset.f));
+}
+drawProjects();
+
+// ---- Pricing: live from Supabase (admin edits show instantly) ----
+const esc=(s)=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fallback=[{title:"Starter",price:"15,000",is_popular:false,delivery_time:"Delivery in 7 days",features:["5-page business website","Mobile responsive","WhatsApp chat button","Contact form","1 month free support"]},{title:"Business",price:"30,000",is_popular:true,delivery_time:"Delivery in 10 days",features:["10-page website","Admin dashboard","SEO and Google Maps setup","M-Pesa payment link","3 months free support"]},{title:"Premium",price:"60,000",is_popular:false,delivery_time:"Delivery in 14 days",features:["Custom web system","Online booking or ordering","Staff and user accounts","Email and SMS alerts","12 months priority support"]}];
+function drawPricing(list){
+  PKGS=list;$("#pricing-grid").innerHTML=list.map((p,i)=>{const pop=p.is_popular;return `<div class="relative flex flex-col rounded-2xl border p-8 ${pop?"border-brand bg-[#0a0f1c] shadow-[0_0_50px_-10px_#0A66FF] md:-my-3":"border-white/10 bg-[#0d0e12]"}">${pop?'<span class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-brand bg-[#0a1a3d] px-4 py-1 text-sm font-semibold shadow-[0_0_20px_#0A66FF]">Most Popular</span>':""}<h3 class="text-lg font-semibold text-white/70">${esc(p.title)}</h3><p class="mt-4 flex items-end gap-2"><span class="mb-2 text-lg text-white/60">KES</span><span class="text-5xl font-extrabold leading-none">${esc(p.price)}</span></p><hr class="my-6 w-1/3 border-white/15"><ul class="flex-1 space-y-4 text-[15px]">${(p.features||[]).map(f=>`<li class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs ${pop?"bg-brand":"bg-white/15"}">✓</span>${esc(f)}</li>`).join("")}</ul><p class="mt-6 text-sm text-white/50">⏱ ${esc(p.delivery_time)}</p><button onclick="openPay(${i})" class="mt-4 block w-full rounded-lg py-3 text-center font-semibold ${pop?"bg-brand":"border border-white/15 bg-white/5 hover:bg-white/10"}">Choose Plan</button></div>`}).join("");
+}
+drawPricing(fallback);
+db.from("pricing_packages").select("*").order("created_at").then(({data})=>{ if(data&&data.length) drawPricing(data); });
+
+
+// ---- EmailJS: admin alert + auto-reply. Failure never blocks the saved message. ----
+async function sendEmails(r){
+  if(!window.emailjs) return "EmailJS library did not load";
+  if([EMAILJS_PUBLIC_KEY,EMAILJS_SERVICE_ID,EMAILJS_ADMIN_TEMPLATE,EMAILJS_REPLY_TEMPLATE].some(v=>!v||v.startsWith("YOUR"))) return "EmailJS values are not filled in";
+  emailjs.init({publicKey:EMAILJS_PUBLIC_KEY});
+  const errs=[], go=async(tpl,p,label)=>{try{await emailjs.send(EMAILJS_SERVICE_ID,tpl,p);}catch(e){errs.push(label+": "+((e&&(e.text||e.message))||e));console.warn("EmailJS "+label,e);}};
+  await go(EMAILJS_ADMIN_TEMPLATE,{name:r.name,email:r.email,phone:r.phone,business_type:r.business_type,message:r.message,reply_to:r.email},"admin alert");
+  await go(EMAILJS_REPLY_TEMPLATE,{name:r.name,to_email:r.email,subject:"We got your message, "+r.name,body:"Thanks for contacting FlexCode. We have received your message and will reply within 24 hours. For a faster response, WhatsApp us on +254 700 000 000."},"auto-reply");
+  return errs.join(" | ");
+}
+
+// ---- Contact: saves straight into Supabase `messages` ----
+$("#form").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const f=e.target, st=$("#status"), btn=$("#send");
+  if(f.website.value) return; // honeypot
+  btn.disabled=true; btn.textContent="Sending…"; st.textContent="";
+  const last=+localStorage.getItem("fc_last")||0;
+  if(Date.now()-last<60000){ st.className="text-sm text-red-600"; st.textContent="Please wait a minute before sending again."; btn.disabled=false; btn.textContent="Send Message"; return; }
+  const row={name:f.name.value.trim(),email:f.email.value.trim(),phone:f.phone.value.trim(),business_type:f.business_type.value,message:f.message.value.trim()};
+  const {error}=await db.from("messages").insert(row);
+  if(error){ st.className="text-sm text-red-600"; st.textContent="Could not send. Please WhatsApp us on +254 700 000 000."; }
+  else { const em=await sendEmails(row); localStorage.setItem("fc_last",Date.now()); st.className="text-sm text-green-600"; st.textContent="Thanks! We will reply within 24 hours."+(em&&location.search.includes("debug")?" [Email issue: "+em+"]":""); f.reset(); }
+  btn.disabled=false; btn.textContent="Send Message";
+});
+
+// ---- Scroll reveal + active nav link ----
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.1});
+const watch=()=>document.querySelectorAll(".rv:not(.in)").forEach(el=>io.observe(el)); watch(); setTimeout(watch,300);
+const so=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) document.querySelectorAll(".nav").forEach(a=>{const on=a.dataset.l===e.target.id;a.classList.toggle("text-brand",on);a.classList.toggle("text-white/70",!on);}); }),{rootMargin:"-40% 0px -55% 0px"});
+links.forEach(l=>{const el=document.getElementById(l); el&&so.observe(el);});
+// ================= ADMIN (hidden at index.html#/admin) =================
+const A = $("#admin"), PP = { list: [], f: null }, ST = {};
+const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const fmt = (d) => new Date(d).toLocaleDateString("en-KE");
+const sameDay = (a, b) => new Date(a).toDateString() === b.toDateString();
+const last7 = () => Array.from({ length: 7 }, (_, i) => { const d = new Date(); d.setDate(d.getDate() - (6 - i)); return d; });
+const inpA = "mt-1 w-full rounded-lg border bg-white px-3 py-2 outline-none focus:border-[#0A66FF]";
+const cardA = "rounded-xl bg-white p-5 shadow-sm";
+
+function route() {
+  const h = location.hash, adm = h.startsWith("#/admin"), por = h.startsWith("#/portal"); clearInterval(window.__pt);
+  $("#site").classList.toggle("hidden", adm || por); A.classList.toggle("hidden", !adm); $("#portal").classList.toggle("hidden", !por);
+  document.title = adm ? "FlexCode Admin" : por ? "Track your project – FlexCode" : "FlexCode – Websites & Software, Eldoret Kenya";
+  if (adm) adminRoute(); if (por) { portalRoute(); window.scrollTo(0, 0); }
+}
+let ME = "", EMAIL = "", MEROW = null, PERM = {};
+const can = (p) => !!MEROW && (MEROW.role === "super_admin" || !!PERM[p] || !!(MEROW.perms && MEROW.perms[p]));
+const TITLES = { dashboard: "Admin Dashboard", messages: "Inbox Messages", subscriptions: "Subscriptions", team: "Team Management", roles: "Roles and Permissions", pricing: "Pricing Management", settings: "Settings", projects: "Projects Dashboard", chat: "Client Chat" };
+const DARK = ["subscriptions", "team", "roles", "projects", "chat"];
+const modal = (h) => { $("#modal").innerHTML = h ? `<div class="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4"><div class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-white/10 bg-[#11141b] p-6 text-white">${h}</div></div>` : ""; };
+const toast = (m, bad) => { const t = $("#toast"); t.innerHTML = `<div class="rounded-lg px-4 py-3 font-semibold text-white shadow-lg ${bad ? "bg-red-600" : "bg-green-600"}">${esc(m)}</div>`; setTimeout(() => t.innerHTML = "", 3500); };
+const log = (a, t) => db.from("activity_logs").insert({ actor: EMAIL, action: a, target: t }).then(() => {});
+const noAccess = () => `<main class="grid min-h-screen place-items-center bg-black p-4 text-white"><div class="max-w-sm text-center"><h1 class="text-2xl font-bold">No admin access</h1><p class="mt-2 text-white/60">This account is not an active admin. Ask a Super Admin to add or reactivate you.</p><button onclick="logout()" class="mt-6 rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold">Logout</button></div></main>`;
+async function adminRoute() {
+  const { data: { session } } = await db.auth.getSession();
+  if (!session) return (A.innerHTML = loginView(), bindLogin());
+  EMAIL = session.user.email.toLowerCase();
+  const { data: row } = await db.from("admins").select("*").eq("email", EMAIL).maybeSingle();
+  if (!row || !row.active) return (A.innerHTML = noAccess());
+  MEROW = row; PERM = {};
+  const { data: rp } = await db.from("role_permissions").select("perm,allowed").eq("role", row.role); (rp || []).forEach(x => PERM[x.perm] = x.allowed);
+  db.rpc("touch_admin").then(() => {});
+  let page = location.hash.split("/")[2] || "dashboard";
+  if ((page === "team" && !can("manage_users")) || (page === "roles" && !can("manage_roles")) || (page === "settings" && !can("settings"))) page = "dashboard";
+  const ARG = location.hash.split("/")[3]; ME = row.name || EMAIL.split("@")[0]; const ini = ME[0].toUpperCase(), dark = DARK.includes(page);
+  const nav = [["dashboard","Dashboard",1],["messages","Messages",1],["subscriptions","Subscriptions",1],["projects","Projects",1],["chat","Chat",1],["team","Team",can("manage_users")],["roles","Roles",can("manage_roles")],["pricing","Pricing Packages",1],["settings","Settings",can("settings")]].filter(n => n[2]);
+  A.innerHTML = `<div class="flex min-h-screen flex-col gap-3 bg-[#eef0f5] p-3 text-gray-900 md:flex-row">
+    <aside class="flex shrink-0 flex-col rounded-3xl bg-black p-5 text-white md:w-64">
+      <a href="#/admin" class="flex items-center gap-2 px-2 py-3 text-2xl font-bold"><span class="grid h-9 w-9 place-items-center rounded-md border-2 border-[#0A66FF] font-mono text-xs text-[#0A66FF]">&lt;F/&gt;</span>Flex<span class="-ml-2 text-[#0A66FF]">Code</span></a>
+      <nav class="mt-3 flex gap-1 overflow-x-auto md:mt-10 md:flex-1 md:flex-col md:gap-2">${nav.map(([k,l]) => `<a id="n-${k}" href="#/admin/${k}" class="flex items-center gap-3 whitespace-nowrap rounded-xl px-4 py-3 ${page===k?"bg-[#0A66FF] shadow-[0_0_20px_-4px_#0A66FF]":"text-white/75 hover:bg-white/10"}">${ic(k)}${l}${k==="messages"?'<span id="nb" class="ml-auto hidden rounded-md bg-white/25 px-2 text-xs"></span>':""}</a>`).join("")}</nav>
+      <div class="mt-3 flex items-center gap-3 border-t border-white/10 pt-4"><span class="grid h-10 w-10 place-items-center rounded-full bg-[#0A66FF] font-bold">${esc(ini)}</span><div class="min-w-0 flex-1"><p class="truncate text-sm font-medium">${esc(ME)}</p><p class="text-xs capitalize text-white/50">${esc(row.role.replace("_"," "))}</p></div><button onclick="logout()" aria-label="Logout" class="text-white/60 hover:text-white">${ic("logout")}</button></div>
+    </aside>
+    <div class="min-w-0 flex-1 rounded-3xl shadow-sm ${dark ? "bg-[#0b0d12] text-white" : "bg-white"}">
+      <header class="flex flex-wrap items-center gap-3 border-b px-6 py-4 ${dark ? "border-white/10" : ""}"><h1 class="mr-auto text-2xl font-bold">${page==="projects"&&ARG?"Project Detail":TITLES[page]||TITLES.dashboard}</h1>
+        <label class="flex items-center gap-2 rounded-lg px-3 py-2 ${dark ? "bg-white/10 text-white/60" : "bg-gray-100 text-gray-500"}">${ic("search",18)}<input placeholder="Search messages…" onkeydown="if(event.key==='Enter'){MS.q=this.value;location.hash='#/admin/messages'}" class="w-40 bg-transparent outline-none"></label>
+        <a href="#/admin/messages" aria-label="New messages" class="relative">${ic("bell",24)}<span id="bb" class="absolute -right-2 -top-2 hidden rounded-full bg-red-500 px-1.5 text-xs text-white"></span></a>
+        <span class="grid h-10 w-10 place-items-center rounded-full bg-[#0A66FF] font-bold text-white">${esc(ini)}</span></header>
+      <main id="am" class="p-6 md:p-8"><p class="text-gray-400">Loading…</p></main></div></div><div id="modal"></div><div id="toast" class="fixed bottom-5 right-5 z-[60]"></div>`;
+  db.from("messages").select("id", { count: "exact", head: true }).eq("status", "New").then(({ count }) => { if (count) ["bb","nb"].forEach(i => { const e = $("#" + i); if (e) { e.textContent = count; e.classList.remove("hidden"); } }); });
+  db.from("project_messages").select("id", { count: "exact", head: true }).eq("sender", "client").eq("read", false).then(({ count }) => { const a = $("#n-chat"); if (count && a) a.insertAdjacentHTML("beforeend", `<span class="ml-auto rounded-md bg-red-500 px-2 text-xs">${count}</span>`); });
+  ({ dashboard: pgDash, messages: pgMsgs, pricing: pgPrice, settings: pgSet, subscriptions: pgSubs, team: pgTeam, roles: pgRoles, projects: () => (ARG ? pgProject(ARG) : pgProjects()), chat: () => pgChat(ARG) }[page] || pgDash)();
+}
+async function logout() { await db.auth.signOut(); location.hash = "#/admin"; adminRoute(); }
+
+// ---- Login ----
+const IC = { dashboard:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>', messages:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', pricing:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1"/>', settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>', bell:'<path d="M6 9a6 6 0 0112 0c0 6 2 7 2 8H4c0-1 2-2 2-8zM10 21h4"/>', search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/>', logout:'<path d="M9 4H4v16h5M16 8l5 4-5 4M21 12H9"/>', eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>', chat:'<path d="M4 4h16v12H9l-5 4z"/>', lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>', phone:'<path d="M5 4h4l2 5-3 2a11 11 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>' };
+const ic = (n, s = 20) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${IC[n]}</svg>`;
+const loginView = () => `<main class="grid min-h-screen place-items-center px-4 text-white" style="background:radial-gradient(60% 50% at 50% 35%,rgba(10,102,255,.28),transparent),#02040b"><div class="w-full max-w-md">
+  <form id="lf" class="space-y-5 rounded-2xl border border-[#0A66FF]/50 bg-[#0a0d14]/95 p-8 shadow-[0_0_60px_-10px_#0A66FF]">
+    <div class="flex items-center justify-center gap-3 text-3xl font-bold"><span class="grid h-11 w-11 place-items-center rounded-lg border-2 border-[#0A66FF] font-mono text-sm text-[#0A66FF]">&lt;F/&gt;</span>Flex<span class="-ml-2 text-[#0A66FF]">Code</span></div>
+    <div class="text-center"><h1 class="text-3xl font-bold">Admin Login</h1><p class="mt-1 text-[#6ea0ff]">Sign in to your FlexCode Admin Dashboard</p></div>
+    <label class="block text-sm font-semibold">Email<span class="mt-1 flex items-center gap-3 rounded-lg border border-white/15 bg-[#10131b] px-3 focus-within:border-[#0A66FF]"><span class="text-[#0A66FF]">${ic("messages")}</span><input name="e" type="email" required autocomplete="username" placeholder="admin@flexcode.co.ke" class="w-full bg-transparent py-3 font-normal outline-none"></span></label>
+    <label class="block text-sm font-semibold">Password<span class="mt-1 flex items-center gap-3 rounded-lg border border-white/15 bg-[#10131b] px-3 focus-within:border-[#0A66FF]"><span class="text-[#0A66FF]">${ic("lock")}</span><input name="p" type="password" required autocomplete="current-password" placeholder="Password" class="w-full bg-transparent py-3 font-normal outline-none"><button type="button" aria-label="Show password" onclick="const i=this.parentNode.querySelector('input');i.type=i.type==='password'?'text':'password'" class="text-white/60">${ic("eye")}</button></span></label>
+    <p id="le" class="text-sm text-red-400"></p>
+    <button class="w-full rounded-full bg-gradient-to-r from-blue-600 to-[#0A66FF] py-3 text-lg font-bold shadow-[0_0_30px_-6px_#0A66FF]">Sign In</button>
+    <p class="text-center text-sm text-white/50">Admin Access Only · Secure login</p></form>
+  <p class="mt-8 text-center text-xs text-white/40">© ${new Date().getFullYear()} FlexCode. All rights reserved.</p></div></main>`;
+function bindLogin() {
+  $("#lf").onsubmit = async (e) => { e.preventDefault(); const f = e.target;
+    const { error } = await db.auth.signInWithPassword({ email: f.e.value, password: f.p.value });
+    if (error) $("#le").textContent = error.message === "Invalid login credentials" ? "Wrong email or password." : error.message; else { location.hash = "#/admin/dashboard"; adminRoute(); } };
+}
+
+// ---- Dashboard ----
+const ago = (d) => { const m = (Date.now() - new Date(d)) / 6e4; return m < 60 ? Math.max(1, Math.round(m)) + "m ago" : m < 1440 ? Math.round(m / 60) + "h ago" : Math.round(m / 1440) + "d ago"; };
+const cnt = (a, f, t) => a.filter(x => { const d = Date.now() - new Date(x.created_at); return d >= f * 864e5 && d < t * 864e5; }).length;
+const trend = (c, p) => p ? `${c >= p ? "+" : ""}${Math.round((c - p) / p * 100)}% from last week` : `${c} this week`;
+const svgChart = (v, ds, bar) => { const w = bar ? 320 : 440, h = bar ? 150 : 210, p = 24, b = h - 28, m = Math.max(...v, 1), x = (i) => p + i * (w - 2 * p) / 6, y = (n) => b - (n / m) * (b - 24);
+  const lab = ds.map((d, i) => `<text x="${x(i)}" y="${h - 6}" text-anchor="middle" font-size="12" fill="#6b7280">${days[d.getDay()]}</text>`).join("");
+  if (bar) return `<svg viewBox="0 0 ${w} ${h}" class="w-full"><line x1="${p - 8}" x2="${w - p + 8}" y1="${b}" y2="${b}" stroke="#e5e7eb"/>${v.map((n, i) => `<rect x="${x(i) - 11}" y="${y(n)}" width="22" height="${b - y(n)}" rx="3" fill="#0A66FF"/>`).join("")}${lab}</svg>`;
+  const pts = v.map((n, i) => x(i) + "," + y(n)).join(" ");
+  return `<svg viewBox="0 0 ${w} ${h}" class="w-full">${[0,1,2,3].map(i => `<line x1="${p}" x2="${w - p}" y1="${24 + i * (b - 24) / 3}" y2="${24 + i * (b - 24) / 3}" stroke="#eceff4"/>`).join("")}<polygon points="${p},${b} ${pts} ${w - p},${b}" fill="#0A66FF" fill-opacity=".16"/><polyline fill="none" stroke="#0A66FF" stroke-width="2.5" points="${pts}"/>${v.map((n, i) => `<circle cx="${x(i)}" cy="${y(n)}" r="4" fill="#fff" stroke="#0A66FF" stroke-width="2"/>`).join("")}${lab}</svg>`; };
+async function pgDash() {
+  const ds = last7(), since = new Date(Date.now() - 14 * 864e5).toISOString();
+  const [m, vw, vt] = await Promise.all([db.from("messages").select("*").order("created_at", { ascending: false }), db.from("page_views").select("created_at").gte("created_at", since), db.from("page_views").select("*", { count: "exact", head: true })]);
+  const msgs = m.data || [], views = vw.data || [], today = msgs.filter(x => sameDay(x.created_at, new Date())).length;
+  const card = "rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100";
+  const stat = (i, l, v, s) => `<div class="${card} text-center"><div class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-blue-100 text-[#0A66FF]">${ic(i, 26)}</div><p class="mt-3 text-gray-500">${l}</p><p class="text-4xl font-bold">${v}</p><p class="text-sm font-medium text-[#0A66FF]">↗ ${s}</p></div>`;
+  $("#am").innerHTML = `<h2 class="text-2xl font-bold">Welcome back, ${esc(ME)}!</h2><p class="text-gray-500">Here is what's happening with FlexCode today.</p>
+  <div class="mt-6 grid gap-4 md:grid-cols-3">${stat("chat","Total Messages",msgs.length.toLocaleString(),trend(cnt(msgs,0,7),cnt(msgs,7,14)))}${stat("messages","New Messages",msgs.filter(x=>x.status==="New").length,"+"+today+" today")}${stat("eye","Total Views",(vt.count||0).toLocaleString(),trend(cnt(views,0,7),cnt(views,7,14)))}</div>
+  <div class="mt-6 grid gap-4 lg:grid-cols-5"><div class="${card} lg:col-span-3 lg:row-span-2"><div class="flex justify-between"><h3 class="text-lg font-semibold">Message Activity</h3><span class="text-sm text-gray-500">Last 7 days</span></div>${svgChart(ds.map(d=>msgs.filter(x=>sameDay(x.created_at,d)).length),ds)}</div>
+  <div class="${card} lg:col-span-2"><h3 class="text-lg font-semibold">Views Overview</h3><p class="text-sm text-gray-500">This week</p>${svgChart(ds.map(d=>views.filter(x=>sameDay(x.created_at,d)).length),ds,1)}</div>
+  <div class="${card} lg:col-span-2"><h3 class="mb-2 text-lg font-semibold">Recent Messages</h3>${msgs.slice(0,3).map(x=>`<div class="flex items-center gap-3 border-b py-2.5 last:border-0"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-100 font-semibold text-[#0A66FF]">${esc((x.name||"?")[0]).toUpperCase()}</span><div class="min-w-0 flex-1"><p class="text-sm font-semibold">${esc(x.name)}</p><p class="truncate text-xs text-gray-500">${esc(x.message)}</p></div><span class="text-xs text-gray-400">${ago(x.created_at)}</span></div>`).join("")||'<p class="text-sm text-gray-400">No messages yet.</p>'}</div></div>`;
+}
+
+// ---- Messages ----
+let MS = { list: [], q: "", st: "All", p: 1, reply: null, body: "" };
+async function pgMsgs() { const { data } = await db.from("messages").select("*").order("created_at", { ascending: false }); MS.list = data || []; drawMsgs(); }
+function exportCsv() {
+  const cell = (c) => { const s = String(c ?? ""); return '"' + ((/^[=+\-@]/.test(s) ? "'" : "") + s).replace(/"/g, '""') + '"'; };
+  const rows = [["Name","Email","Phone","Business","Message","Date","Status"], ...MS.list.map(x => [x.name, x.email, x.phone, x.business_type, x.message, x.created_at, x.status])];
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([rows.map(r => r.map(cell).join(",")).join("\n")], { type: "text/csv" })); a.download = "flexcode-messages.csv"; a.click();
+}
+function drawMsgs() {
+  const bd = { New: "bg-blue-100 text-[#0A66FF]", Read: "bg-gray-100 text-gray-600", Replied: "bg-green-100 text-green-700" }, N = 10;
+  const rows = MS.list.filter(x => (MS.st === "All" || x.status === MS.st) && `${x.name} ${x.email} ${x.business_type} ${x.message}`.toLowerCase().includes(MS.q.toLowerCase()));
+  const pages = Math.max(1, Math.ceil(rows.length / N)); MS.p = Math.min(MS.p, pages); const s0 = (MS.p - 1) * N, vis = rows.slice(s0, s0 + N);
+  const pb = (i) => `<button onclick="MS.p=${i};drawMsgs()" class="h-10 w-10 rounded-lg ${i === MS.p ? "bg-[#0A66FF] text-white" : "text-[#0A66FF]"}">${i}</button>`;
+  $("#am").innerHTML = `<div class="rounded-2xl border bg-gray-50 p-4"><div class="flex flex-wrap gap-3">
+    <label class="flex min-w-[220px] flex-1 items-center gap-2 rounded-lg border bg-white px-3 text-gray-500">${ic("search",18)}<input id="mq" placeholder="Search by name, email, business, or message…" value="${esc(MS.q)}" class="w-full bg-transparent py-2.5 outline-none"></label>
+    <select onchange="MS.st=this.value;MS.p=1;drawMsgs()" class="rounded-lg border bg-white px-3 py-2.5">${["All","New","Read","Replied"].map(s => `<option ${s === MS.st ? "selected" : ""}>${s}</option>`).join("")}</select>
+    <button onclick="exportCsv()" class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold text-white">Export CSV</button></div>
+    <div class="mt-4 overflow-x-auto rounded-xl bg-white"><table class="w-full text-left text-sm"><thead class="bg-gray-100 text-gray-600"><tr>${["","Name","Email","Phone","Business","Message","Date","Status","Actions"].map(h => `<th class="p-3 font-semibold">${h}</th>`).join("")}</tr></thead><tbody>
+    ${vis.map(x => `<tr class="border-t"><td class="p-3"><input type="checkbox"></td><td class="p-3 font-medium">${esc(x.name)}</td><td class="p-3">${esc(x.email)}</td><td class="p-3 whitespace-nowrap">${esc(x.phone)}</td><td class="p-3">${esc(x.business_type)}</td><td class="max-w-[200px] truncate p-3">${esc(x.message)}</td><td class="p-3 whitespace-nowrap">${fmt(x.created_at)}</td><td class="p-3"><span class="rounded-full px-2.5 py-1 text-xs ${bd[x.status] || bd.New}">${esc(x.status)}</span></td>
+    <td class="space-x-2 whitespace-nowrap p-3"><button onclick="setSt('${x.id}','Read')" class="rounded-lg bg-[#0A66FF] px-3 py-1.5 text-white ${x.status === "New" ? "" : "opacity-40"}">✓ Mark Read</button><button onclick="delMsg('${x.id}')" class="rounded-lg border px-3 py-1.5">Delete</button><button onclick="openReply('${x.id}')" class="rounded-lg border border-[#0A66FF] px-3 py-1.5 text-[#0A66FF]">Reply</button></td></tr>`).join("")}</tbody></table>
+    ${vis.length ? "" : '<p class="p-6 text-center text-gray-400">No messages match.</p>'}</div></div>
+    <div class="mt-4 flex flex-wrap items-center justify-between gap-3"><p>Showing ${rows.length ? s0 + 1 : 0}-${Math.min(s0 + N, rows.length)} of ${rows.length} messages</p><div class="flex items-center gap-1"><button onclick="MS.p=Math.max(1,MS.p-1);drawMsgs()" class="rounded-lg border px-4 py-2">‹ Previous</button>${Array.from({ length: Math.min(pages, 5) }, (_, i) => pb(i + 1)).join("")}${pages > 5 ? "…" : ""}<button onclick="MS.p=Math.min(${pages},MS.p+1);drawMsgs()" class="rounded-lg border px-4 py-2">Next ›</button></div></div>
+    ${MS.reply ? `<div class="fixed inset-0 grid place-items-center bg-black/60 p-4"><div class="w-full max-w-lg space-y-3 rounded-xl bg-white p-6"><h2 class="text-lg font-bold">Reply to ${esc(MS.reply.name)}</h2><p class="text-sm text-gray-500">${esc(MS.reply.email)}</p>
+    <textarea rows="6" oninput="MS.body=this.value" class="w-full rounded-lg border p-3" placeholder="Write your reply…">${esc(MS.body)}</textarea><div class="flex justify-end gap-3"><button onclick="MS.reply=null;drawMsgs()" class="rounded-lg border px-4 py-2">Cancel</button><button onclick="sendReply()" class="rounded-lg bg-[#0A66FF] px-4 py-2 font-semibold text-white">Send via email</button></div></div></div>` : ""}`;
+  const q = $("#mq"); if (q) q.oninput = (e) => { MS.q = e.target.value; MS.p = 1; const p = e.target.selectionStart; drawMsgs(); const n = $("#mq"); n.focus(); n.setSelectionRange(p, p); };
+}
+async function setSt(id, status) { await db.from("messages").update({ status }).eq("id", id); pgMsgs(); }
+async function delMsg(id) { if (confirm("Delete this message?")) { await db.from("messages").delete().eq("id", id); pgMsgs(); } }
+function openReply(id) { MS.reply = MS.list.find(x => x.id === id); MS.body = ""; drawMsgs(); }
+async function sendReply() { const r = MS.reply; window.open(`mailto:${r.email}?subject=${encodeURIComponent("Re: your FlexCode enquiry")}&body=${encodeURIComponent(MS.body)}`); await setSt(r.id, "Replied"); MS.reply = null; drawMsgs(); }
+
+// ---- Pricing ----
+async function pgPrice() { const { data } = await db.from("pricing_packages").select("*").order("created_at"); PP.list = data || []; PP.f = null; drawPrice(); }
+function drawPrice() {
+  const pop = PP.list.find(p => p.is_popular), f = PP.f, card = "rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-100";
+  const tog = (on, fn) => `<button type="button" onclick="${fn}" class="h-7 w-12 shrink-0 rounded-full p-0.5 transition ${on ? "bg-[#0A66FF]" : "bg-gray-300"}"><span class="block h-6 w-6 rounded-full bg-white transition ${on ? "translate-x-5" : ""}"></span></button>`;
+  $("#am").innerHTML = `<div class="flex flex-wrap items-start gap-3"><p class="mr-auto text-gray-500">Manage your pricing packages — create, read, update, and delete pricing plans</p><button onclick="PP.f={title:'',price:'',delivery_time:'',features:[],is_popular:false};drawPrice()" class="rounded-lg bg-[#0A66FF] px-5 py-3 font-semibold text-white">+ Add Package</button></div>
+  <div class="mt-5 grid gap-4 md:grid-cols-3">${[["Total Packages", PP.list.length, "in your database"], ["Active Plans", PP.list.length, "live on website"], ["Most Popular", pop ? esc(pop.title) : "None", "highlighted on site"]].map(([l, v, s]) => `<div class="${card}"><p class="font-semibold">${l}</p><p class="mt-1 text-3xl font-bold">${v}</p><p class="text-sm text-[#0A66FF]">${s}</p></div>`).join("")}</div>
+  <h3 class="mt-8 text-xl font-bold">Pricing Packages</h3><p class="text-sm text-gray-500">Manage your pricing tiers</p>
+  <div class="mt-5 grid gap-5 md:grid-cols-3">${PP.list.map(p => `<div class="relative flex flex-col rounded-2xl bg-white p-6 shadow-sm ${p.is_popular ? "shadow-[0_0_30px_-6px_#0A66FF] ring-2 ring-[#0A66FF]" : "ring-1 ring-gray-100"}">${p.is_popular ? '<span class="absolute -top-3 right-5 rounded-lg bg-[#0A66FF] px-3 py-1 text-xs font-bold text-white">★ POPULAR</span>' : ""}<h4 class="text-xl font-bold">${esc(p.title)}</h4><p class="mt-2 text-3xl font-extrabold ${p.is_popular ? "text-[#0A66FF]" : ""}">KES ${esc(p.price)}</p>
+  <ul class="my-4 flex-1 space-y-2 text-sm">${(p.features || []).map(x => `<li class="flex items-center gap-2"><span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#0A66FF] text-[10px] text-white">✓</span>${esc(x)}</li>`).join("")}<li class="text-gray-500">⏱ ${esc(p.delivery_time)}</li></ul>
+  <div class="flex gap-3"><button onclick="editPkg('${p.id}')" class="flex-1 rounded-lg py-2 font-semibold ${p.is_popular ? "bg-[#0A66FF] text-white" : "border border-[#0A66FF] text-[#0A66FF]"}">Edit</button><button onclick="delPkg('${p.id}')" class="flex-1 rounded-lg border border-red-500 py-2 font-semibold text-red-600">Delete</button></div></div>`).join("")}</div>
+  ${f ? `<div class="mt-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-100"><h3 class="text-xl font-bold">${f.id ? "Edit Package — " + esc(f.title) : "New Package"}</h3><p class="text-sm text-gray-500">Update package details below</p>
+  <div class="mt-5 grid gap-6 md:grid-cols-2"><div class="space-y-4">${[["title","Title"],["price","Price (KES)"],["delivery_time","Delivery Time"]].map(([k, l]) => `<label class="block text-sm font-semibold">${l}<input value="${esc(f[k])}" oninput="PP.f.${k}=this.value" class="${inpA} font-normal"></label>`).join("")}</div>
+  <div><p class="text-sm font-semibold">Features List</p><div class="mt-2 space-y-2">${f.features.map((x, i) => `<div class="flex items-center justify-between rounded-lg bg-gray-100 px-3 py-2 text-sm">${esc(x)}<button onclick="PP.f.features.splice(${i},1);drawPrice()" aria-label="Remove">✕</button></div>`).join("")}</div>
+  <div class="mt-2 flex gap-2"><input id="nf" placeholder="+ Add feature" class="flex-1 rounded-lg border px-3 py-2"><button onclick="addFeat()" class="rounded-lg border px-4">Add</button></div>
+  <div class="mt-5 flex items-center justify-between gap-4 rounded-lg bg-gray-50 p-4"><div><p class="font-semibold">Popular Badge</p><p class="text-xs text-gray-500">This package will be highlighted as the most popular option</p></div>${tog(f.is_popular, "PP.f.is_popular=!PP.f.is_popular;drawPrice()")}</div></div></div>
+  <div class="mt-6 flex justify-end gap-3"><button onclick="PP.f=null;drawPrice()" class="rounded-lg border px-5 py-2.5">Cancel</button><button onclick="savePkg()" class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold text-white">Save Changes</button></div></div>` : ""}`;
+}
+const editPkg = (id) => { PP.f = JSON.parse(JSON.stringify(PP.list.find(p => p.id === id))); PP.f.features ||= []; drawPrice(); scrollTo(0, document.body.scrollHeight); };
+const addFeat = () => { const v = $("#nf").value.trim(); if (v) { PP.f.features.push(v); drawPrice(); } };
+async function savePkg() {
+  const { id, created_at, ...row } = PP.f; if (!row.title.trim()) return alert("Title is required.");
+  if (row.is_popular) await db.from("pricing_packages").update({ is_popular: false }).neq("id", id || "00000000-0000-0000-0000-000000000000");
+  const { error } = await (id ? db.from("pricing_packages").update(row).eq("id", id) : db.from("pricing_packages").insert(row));
+  if (error) return alert("Could not save: " + error.message); pgPrice();
+}
+async function delPkg(id) { if (confirm("Delete this package?")) { await db.from("pricing_packages").delete().eq("id", id); pgPrice(); } }
+
+// ---- Settings ----
+const SDEF = { id: 1, admin_email: "admin@flexcode.co.ke", notify_enabled: true, smtp_host: "smtp.gmail.com", smtp_port: "587", smtp_user: "", smtp_pass: "", smtp_encryption: "TLS", from_name: "FlexCode", from_email: "", sms_phone: "", timezone: "Africa/Nairobi", site_name: "FlexCode", site_url: "", maintenance: false };
+let SORIG = {};
+async function pgSet() { const { data } = await db.from("settings").select("*").eq("id", 1).maybeSingle(); SORIG = { ...SDEF, ...(data || {}) }; Object.assign(ST, SORIG); drawSet(""); }
+function drawSet(msg) {
+  const fld = (k, l, t = "text") => `<label class="block text-sm font-semibold">${l}<input type="${t}" value="${esc(ST[k] ?? "")}" oninput="ST.${k}=this.value" class="${inpA} font-normal"></label>`;
+  const tog = (k, l, d) => `<div class="flex items-start gap-3"><button type="button" onclick="ST.${k}=!ST.${k};drawSet()" class="mt-0.5 h-7 w-12 shrink-0 rounded-full p-0.5 transition ${ST[k] ? "bg-[#0A66FF]" : "bg-gray-300"}"><span class="block h-6 w-6 rounded-full bg-white transition ${ST[k] ? "translate-x-5" : ""}"></span></button><div><p class="text-sm font-semibold">${l}</p><p class="text-xs text-gray-500">${d}</p></div></div>`;
+  const sel = (k, l, o) => `<label class="block text-sm font-semibold">${l}<select onchange="ST.${k}=this.value;drawSet()" class="${inpA} font-normal">${o.map(x => `<option ${ST[k] === x ? "selected" : ""}>${x}</option>`).join("")}</select></label>`;
+  const sec = (i, t, b, g = "") => `<section class="${cardA} !p-6 ring-1 ring-gray-100"><h3 class="mb-4 flex items-center gap-3 text-lg font-semibold"><span class="text-[#0A66FF]">${ic(i, 24)}</span>${t}</h3><div class="grid gap-4 ${g}">${b}</div></section>`;
+  const tz = sel("timezone", "Timezone", ["Africa/Nairobi", "Africa/Kampala", "Africa/Dar_es_Salaam", "UTC", "Europe/London"]);
+  $("#am").innerHTML = `<div class="max-w-4xl space-y-5"><p class="text-sm text-gray-500">Dashboard / Settings</p><div><h2 class="text-3xl font-bold">Admin Settings</h2><p class="text-gray-600">Manage notification preferences, email configuration, and site settings for FlexCode.</p></div>
+  ${sec("bell", "Notification Settings", fld("admin_email", "Admin Email for Notifications", "email") + tog("notify_enabled", "Enable email notifications", "Receive system alerts, user activity, and error reports via email."))}
+  ${sec("messages", "SMTP Email Settings", fld("smtp_host", "SMTP Host") + fld("smtp_port", "SMTP Port") + fld("smtp_user", "SMTP Username") + fld("smtp_pass", "SMTP Password", "password") + sel("smtp_encryption", "Encryption", ["TLS", "SSL", "None"]) + fld("from_name", "From Name") + fld("from_email", "From Email", "email"), "md:grid-cols-2")}
+  <div class="grid gap-5 md:grid-cols-2">${sec("phone", "Phone Number", fld("sms_phone", "Phone Number for SMS Alerts", "tel") + '<p class="-mt-2 text-xs text-gray-500">Used for critical alerts.</p>' + tz)}
+  ${sec("settings", "Site Settings", fld("site_name", "Site Name") + fld("site_url", "Site URL", "url") + tz + tog("maintenance", "Maintenance Mode", "When enabled, the site will display a maintenance message to users."))}</div>
+  <div class="flex items-center justify-end gap-3"><span class="mr-auto text-sm text-gray-600">${esc(msg || "")}</span><button onclick="Object.assign(ST,SORIG);drawSet()" class="rounded-lg border px-6 py-2.5">Cancel</button><button onclick="saveSet()" class="rounded-lg bg-[#0A66FF] px-6 py-2.5 font-semibold text-white">Save Changes</button></div></div>`;
+}
+async function saveSet() { const { error } = await db.from("settings").upsert({ ...ST, id: 1 }); if (!error) SORIG = { ...ST }; drawSet(error ? "Could not save: " + error.message : "Settings saved."); }
+
+// ================= TEAM / ROLES / SUBSCRIPTIONS (dark pages) =================
+Object.assign(IC, { subscriptions: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>', team: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-4 3-6 6-6s6 2 6 6M16 11a3 3 0 100-6M18 14c2 1 3 3 3 6"/>', roles: '<path d="M12 3l8 3v6c0 5-3 8-8 9-5-1-8-4-8-9V6z"/>' });
+const dk = "rounded-2xl border border-white/10 bg-white/[0.04]", dinp = "mt-1 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2.5 outline-none focus:border-[#0A66FF]";
+const tg = (on, fn, dis) => `<button type="button" ${dis ? "disabled" : ""} onclick="${fn}" class="h-7 w-12 rounded-full p-0.5 transition ${on ? "bg-[#0A66FF]" : "bg-gray-500"} ${dis ? "opacity-40" : ""}"><span class="block h-6 w-6 rounded-full bg-white transition ${on ? "translate-x-5" : ""}"></span></button>`;
+const cancelBtn = '<button type="button" onclick="modal()" class="rounded-lg bg-white/10 px-5 py-2.5">Cancel</button>';
+function dl(file, rows) { const c = (v) => { const s = String(v ?? ""); return '"' + ((/^[=+\-@]/.test(s) ? "'" : "") + s).replace(/"/g, '""') + '"'; }; const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([rows.map(r => r.map(c).join(",")).join("\n")], { type: "text/csv" })); a.download = file; a.click(); }
+async function mailClient(to, name, subject, body) {
+  if (!window.emailjs || [EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_REPLY_TEMPLATE].some(v => !v || v.startsWith("YOUR"))) return false;
+  try { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_REPLY_TEMPLATE, { to_email: to, name, subject, body }); return true; } catch (e) { console.warn(e); return false; }
+}
+const pager = (st, pages, key, draw, total, s0, n) => `<div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-white/60"><p>Showing ${total ? s0 + 1 : 0}-${Math.min(s0 + n, total)} of ${total} results</p><div class="flex items-center gap-1"><button onclick="${key}.p=Math.max(1,${key}.p-1);${draw}()" class="rounded-lg border border-white/20 px-4 py-2">‹ Previous</button>${Array.from({ length: Math.min(pages, 5) }, (_, i) => `<button onclick="${key}.p=${i + 1};${draw}()" class="h-10 w-10 rounded-lg ${i + 1 === st.p ? "bg-[#0A66FF] text-white" : "bg-white/10"}">${i + 1}</button>`).join("")}<button onclick="${key}.p=Math.min(${pages},${key}.p+1);${draw}()" class="rounded-lg border border-white/20 px-4 py-2">Next ›</button></div></div>`;
+
+// ---- Team ----
+let TM = { list: [], tab: "all", q: "" };
+const RB = { super_admin: ["Super Admin", "bg-blue-100 text-blue-700"], admin: ["Admin", "bg-[#0A66FF] text-white"], editor: ["Editor", "bg-gray-300 text-gray-700"] };
+const roleOpts = (sel) => [["super_admin","Super Admin"],["admin","Admin"],["editor","Editor"]].filter(([k]) => k !== "super_admin" || MEROW.role === "super_admin").map(([k, l]) => `<option value="${k}" ${k === sel ? "selected" : ""}>${l}</option>`).join("");
+async function pgTeam() { const { data } = await db.from("admins").select("*").order("created_at"); TM.list = data || []; drawTeam(); }
+function drawTeam() {
+  const rows = TM.list.filter(a => (TM.tab === "all" || (TM.tab === "admins" ? a.role !== "editor" : a.role === "editor")) && `${a.name} ${a.email}`.toLowerCase().includes(TM.q.toLowerCase())), mu = can("manage_users");
+  $("#am").innerHTML = `<div class="flex flex-wrap items-center gap-3"><p class="mr-auto text-white/60">Manage your admins and team members and their permissions</p>${mu ? '<button onclick="addAdminModal()" class="rounded-xl bg-[#0A66FF] px-5 py-3 font-semibold">+ Add Admin</button>' : ""}</div>
+  <div class="mt-5 flex gap-8 border-b border-white/10">${[["all","All members"],["admins","Admins"],["editors","Editors"]].map(([k, l]) => `<button onclick="TM.tab='${k}';drawTeam()" class="pb-3 font-semibold ${TM.tab === k ? "border-b-2 border-[#0A66FF]" : "text-white/50"}">${l}</button>`).join("")}</div>
+  <label class="mt-4 flex items-center gap-2 rounded-xl bg-white/10 px-4 text-white/60">${ic("search", 18)}<input id="tq" value="${esc(TM.q)}" placeholder="Search by name or email" class="w-full bg-transparent py-3 outline-none"></label>
+  <div class="mt-4 overflow-x-auto"><table class="w-full text-left text-sm"><thead class="text-xs uppercase text-white/50"><tr><th class="p-3">Member</th><th>Role</th><th>Status</th><th>Last active</th><th>Access</th><th></th></tr></thead><tbody>${rows.map(a => { const r = RB[a.role] || RB.editor; return `<tr class="border-t border-white/10"><td class="p-3"><div class="flex items-center gap-3"><span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#0A66FF]/30 font-semibold">${esc((a.name || a.email)[0]).toUpperCase()}</span><div><p class="font-semibold">${esc(a.name)}</p><p class="text-white/50">${esc(a.email)}</p></div></div></td><td><span class="rounded-lg px-3 py-1.5 text-xs font-semibold ${r[1]}">${r[0]}</span></td><td class="${a.active ? "text-green-400" : "text-red-400"}">● ${a.active ? "Active" : "Inactive"}</td><td class="text-white/70">${a.last_active ? ago(a.last_active) : "Never"}</td><td>${tg(a.active, `toggleAdmin('${a.id}')`, !mu)}</td><td><button onclick="editAdmin('${a.id}')" aria-label="More" class="px-2 text-xl text-white/60">⋯</button></td></tr>`; }).join("")}</tbody></table></div><p class="mt-4 text-sm text-white/50">Showing ${rows.length} of ${TM.list.length} members</p>`;
+  const q = $("#tq"); if (q) q.oninput = (e) => { TM.q = e.target.value; const p = e.target.selectionStart; drawTeam(); const n = $("#tq"); n.focus(); n.setSelectionRange(p, p); };
+}
+function toggleAdmin(id) {
+  const a = TM.list.find(x => x.id === id);
+  if (a.email === EMAIL) return toast("You can't deactivate yourself.", 1);
+  if (!a.active) return setActive(id, true);
+  if (a.role === "super_admin" && TM.list.filter(x => x.role === "super_admin" && x.active).length < 2) return toast("Keep at least one active Super Admin.", 1);
+  modal(`<h3 class="text-xl font-bold">Deactivate ${esc(a.name)}?</h3><p class="mt-2 text-white/60">Are you sure you want to deactivate ${esc(a.name)}? They will lose access immediately.</p><div class="mt-6 flex justify-end gap-3">${cancelBtn}<button onclick="setActive('${id}',false)" class="rounded-lg bg-red-600 px-5 py-2.5 font-semibold">Deactivate</button></div>`);
+}
+async function setActive(id, on) { modal(); const a = TM.list.find(x => x.id === id); const { error } = await db.from("admins").update({ active: on }).eq("id", id); if (error) return toast(error.message, 1); log((on ? "activated" : "deactivated") + " admin", a.email); toast(on ? "Admin activated" : "Admin deactivated"); pgTeam(); }
+function editAdmin(id) {
+  const a = TM.list.find(x => x.id === id); if (!can("manage_users")) return;
+  modal(`<h3 class="text-xl font-bold">${esc(a.name)}</h3><p class="text-sm text-white/50">${esc(a.email)}</p><label class="mt-4 block text-sm">Role<select id="er" class="${dinp}">${roleOpts(a.role)}</select></label><div class="mt-6 flex justify-between gap-3"><button onclick="delAdmin('${id}')" class="rounded-lg border border-red-500 px-4 py-2.5 text-red-400">Delete</button><div class="flex gap-3">${cancelBtn}<button onclick="saveRole('${id}')" class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold">Save</button></div></div>`);
+}
+async function saveRole(id) { const a = TM.list.find(x => x.id === id), role = $("#er").value; if (a.role === "super_admin" && role !== "super_admin" && TM.list.filter(x => x.role === "super_admin" && x.active).length < 2) return toast("Keep at least one Super Admin.", 1); const { error } = await db.from("admins").update({ role }).eq("id", id); if (error) return toast(error.message, 1); log("changed role to " + role, a.email); modal(); toast("Role updated"); pgTeam(); }
+async function delAdmin(id) { const a = TM.list.find(x => x.id === id); if (a.email === EMAIL) return toast("You can't delete yourself.", 1); if (a.role === "super_admin" && TM.list.filter(x => x.role === "super_admin").length < 2) return toast("Keep at least one Super Admin.", 1); if (!confirm("Delete " + a.name + "? Their login will no longer have any access.")) return; const { error } = await db.from("admins").delete().eq("id", id); if (error) return toast(error.message, 1); log("deleted admin", a.email); modal(); toast("Admin removed"); pgTeam(); }
+function addAdminModal() {
+  modal(`<div class="flex items-center justify-between"><h3 class="text-xl font-bold">Add Admin</h3><button onclick="modal()" aria-label="Close" class="text-xl">✕</button></div><form onsubmit="createAdmin(event)" class="mt-4 space-y-4">
+  <label class="block text-sm">Name<input name="nm" required placeholder="Enter full name" class="${dinp}"></label>
+  <label class="block text-sm">Email<input name="email" type="email" required placeholder="admin@example.com" class="${dinp}"></label>
+  <label class="block text-sm">Password<span class="mt-1 flex items-center rounded-lg border border-white/15 bg-white/5 px-3"><input name="password" type="password" required minlength="8" class="w-full bg-transparent py-2.5 outline-none"><button type="button" aria-label="Show password" onclick="const i=this.parentNode.querySelector('input');i.type=i.type==='password'?'text':'password'">${ic("eye")}</button></span></label>
+  <label class="block text-sm">Role<select name="role" class="${dinp}">${roleOpts("admin")}</select></label>
+  <div class="space-y-2 text-sm"><p class="font-semibold">Permissions</p>${[["pm","Manage Messages","Send, edit, delete messages"],["pp","Manage Pricing","Update pricing plans"],["ps","Manage Settings","Modify platform settings"]].map(([n, t, d]) => `<label class="flex items-start gap-3"><input type="checkbox" name="${n}" class="mt-1 h-4 w-4 accent-[#0A66FF]"><span><b>${t}</b><br><span class="text-white/50">${d}</span></span></label>`).join("")}</div>
+  <div class="flex justify-end gap-3">${cancelBtn}<button class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold">Create Admin</button></div></form>`);
+}
+async function createAdmin(e) {
+  e.preventDefault(); const f = e.target, email = f.email.value.trim().toLowerCase(), nm = f.nm.value.trim();
+  const tmp = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } });
+  const { error: e1 } = await tmp.auth.signUp({ email, password: f.password.value, options: { data: { name: nm } } });
+  if (e1 && !/registered/i.test(e1.message)) return toast(e1.message, 1);
+  const { error: e2 } = await db.from("admins").insert({ name: nm, email, role: f.role.value, perms: { manage_messages: f.pm.checked, manage_pricing: f.pp.checked, settings: f.ps.checked } });
+  if (e2) return toast(e2.message, 1);
+  log("created admin", email); modal(); toast("Admin created"); pgTeam();
+}
+
+// ---- Roles & permissions ----
+const PERMS = [["dashboard","Dashboard Access"],["manage_users","Manage Users"],["manage_messages","Manage Messages"],["manage_pricing","Manage Pricing"],["view_analytics","View Analytics"],["edit_content","Edit Content"],["manage_roles","Manage Roles"],["settings","Settings"],["manage_payments","Confirm Payments"],["manage_projects","Manage Projects"]];
+const ROLES = [["super_admin","Super Admin","Full access","Can do all","blue"],["admin","Admin","Manage messages & pricing","Limited access","orange"],["editor","Editor","View only","Read only","gray"]];
+let RL = { rows: {}, orig: "", saved: "" };
+async function pgRoles() { const { data } = await db.from("role_permissions").select("*"); RL.rows = {}; (data || []).forEach(r => RL.rows[r.role + "|" + r.perm] = r.allowed); RL.orig = JSON.stringify(RL.rows); RL.saved = ""; drawRoles(); }
+function drawRoles() {
+  const dirty = JSON.stringify(RL.rows) !== RL.orig, ro = !can("manage_roles");
+  const C = { blue: ["bg-[#0A66FF]", "text-[#4d8dff]", "border-[#0A66FF]"], orange: ["bg-orange-500", "text-orange-400", "border-orange-500"], gray: ["bg-gray-600", "text-gray-400", "border-gray-500"] };
+  $("#am").innerHTML = `<div class="flex flex-wrap items-center gap-3"><p class="mr-auto text-white/60">Manage user roles and access controls across the platform</p><button onclick="dl('flexcode-roles.csv',[['Permission',...ROLES.map(r=>r[1])],...PERMS.map(([p,l])=>[l,...ROLES.map(([k])=>k==='super_admin'||RL.rows[k+'|'+p]?'Yes':'No')])])" class="rounded-lg border border-white/20 px-4 py-2.5">Export CSV</button></div>
+  <div class="mt-5 grid gap-4 md:grid-cols-3">${ROLES.map(([k, t, s, d, c]) => `<div class="${dk} border-t-4 p-5 ${C[c][2]}"><div class="flex items-center gap-4"><span class="grid h-14 w-14 place-items-center rounded-2xl ${C[c][0]}">${ic(k === "super_admin" ? "roles" : k === "admin" ? "settings" : "eye", 26)}</span><div><p class="text-xl font-bold">${t}</p><p class="font-semibold ${C[c][1]}">${s}</p></div></div><p class="mt-3 text-white/60">${d}</p></div>`).join("")}</div>
+  <h3 class="mt-8 text-xl font-bold">Permissions Matrix</h3><p class="text-sm text-white/60">Toggle permissions for each role, then save your changes.</p>
+  <div class="${dk} mt-4 overflow-x-auto"><table class="w-full text-left text-sm"><thead class="text-xs uppercase text-white/50"><tr><th class="p-4">Permission</th>${ROLES.map(r => `<th class="p-4 text-center">${r[1]}</th>`).join("")}</tr></thead><tbody>${PERMS.map(([p, l]) => `<tr class="border-t border-white/10"><td class="p-4 font-medium">${l}</td>${ROLES.map(([k]) => `<td class="p-4 text-center">${tg(k === "super_admin" || RL.rows[k + "|" + p], `RL.rows['${k}|${p}']=!RL.rows['${k}|${p}'];drawRoles()`, ro || k === "super_admin")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+  <div class="mt-4 flex items-center justify-end gap-3"><span class="mr-auto text-sm text-white/50">${RL.saved ? "Saved " + RL.saved : dirty ? "Unsaved changes" : ""}</span><button ${dirty ? "" : "disabled"} onclick="pgRoles()" class="rounded-lg border border-white/20 px-5 py-2.5 disabled:opacity-40">Discard</button><button ${dirty && !ro ? "" : "disabled"} onclick="saveRoles()" class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold disabled:opacity-40">Save Changes</button></div>`;
+}
+async function saveRoles() { const rows = []; ROLES.forEach(([k]) => PERMS.forEach(([p]) => rows.push({ role: k, perm: p, allowed: k === "super_admin" || !!RL.rows[k + "|" + p] }))); const { error } = await db.from("role_permissions").upsert(rows); if (error) return toast(error.message, 1); log("updated role permissions", "matrix"); RL.orig = JSON.stringify(RL.rows); RL.saved = new Date().toLocaleTimeString("en-KE", { hour: "2-digit", minute: "2-digit" }); toast("Permissions saved"); drawRoles(); }
+
+// ---- Subscriptions: manual M-Pesa confirmation ----
+const MILES = [["Payment Confirmed", 0], ["Design Started", 20], ["Homepage Done", 40], ["Content Added", 60], ["Testing", 80], ["Live", 100]];
+const SS = { pending: ["Pending Confirmation", "bg-yellow-500 text-black"], active: ["Active", "bg-green-500/20 text-green-400"], rejected: ["Rejected", "bg-red-500/20 text-red-400"] };
+let SB = { list: [], q: "", st: "All", p: 1, pk: [] };
+async function pgSubs() { const [s, k] = await Promise.all([db.from("subscriptions").select("*").order("created_at", { ascending: false }), db.from("pricing_packages").select("title,price").order("created_at")]); SB.list = s.data || []; SB.pk = k.data || []; drawSubs(); }
+function drawSubs() {
+  const N = 8, mp = can("manage_payments"), rows = SB.list.filter(x => (SB.st === "All" || x.status === SB.st.toLowerCase()) && `${x.client_name} ${x.client_email} ${x.mpesa_code}`.toLowerCase().includes(SB.q.toLowerCase()));
+  const pages = Math.max(1, Math.ceil(rows.length / N)); SB.p = Math.min(SB.p, pages); const s0 = (SB.p - 1) * N, vis = rows.slice(s0, s0 + N), btn = (c, fn, t) => `<button onclick="${fn}" class="rounded-lg ${c} px-3 py-1.5 font-semibold">${t}</button>`;
+  $("#am").innerHTML = `<p class="text-white/60">Manage client subscriptions and payments</p>
+  <div class="${dk} mt-4 flex flex-wrap gap-3 p-4"><label class="flex min-w-[200px] flex-1 items-center gap-2 rounded-lg border border-[#0A66FF]/60 bg-white/5 px-3">${ic("search", 18)}<input id="sq" value="${esc(SB.q)}" placeholder="Search clients…" class="w-full bg-transparent py-2.5 outline-none"></label><select onchange="SB.st=this.value;SB.p=1;drawSubs()" class="rounded-lg border border-white/20 bg-[#11141b] px-3 py-2.5">${["All","Pending","Active","Rejected"].map(s => `<option ${s === SB.st ? "selected" : ""}>${s}</option>`).join("")}</select><button onclick="dl('flexcode-subscriptions.csv',[['Client','Email','Phone','Package','M-Pesa Code','Amount','Status','Confirmed by','Confirmed at'],...SB.list.map(x=>[x.client_name,x.client_email,x.client_phone,x.package,x.mpesa_code,x.amount,x.status,x.confirmed_by,x.confirmed_at])])" class="rounded-lg border border-white/20 px-4 py-2.5">Export CSV</button>${mp ? '<button onclick="addSubModal()" class="rounded-lg bg-[#0A66FF] px-4 py-2.5 font-semibold">+ Add Subscription</button>' : ""}</div>
+  <div class="${dk} mt-4 overflow-x-auto"><table class="w-full text-left text-sm"><thead class="text-white/60"><tr>${["Client Name","Email","Package","M-Pesa Code","Amount","Status","Toggle","Actions"].map(h => `<th class="p-3 font-medium">${h}</th>`).join("")}</tr></thead><tbody>${vis.map(x => { const st = SS[x.status] || SS.pending, off = x.status === "active" && !x.active; return `<tr class="border-t border-white/10"><td class="p-3"><div class="flex items-center gap-2"><span class="grid h-9 w-9 place-items-center rounded-full bg-[#0A66FF]/40 text-xs font-bold">${esc((x.client_name || "?").split(" ").map(w => w[0]).join("").slice(0, 2)).toUpperCase()}</span><b>${esc(x.client_name)}</b></div></td><td class="p-3">${esc(x.client_email)}</td><td class="p-3">${esc(x.package)}</td><td class="p-3 font-mono">${esc(x.mpesa_code)}</td><td class="whitespace-nowrap p-3">KES ${esc(x.amount)}</td><td class="p-3"><span class="rounded-full px-2.5 py-1 text-xs font-semibold ${off ? "bg-gray-500/30 text-gray-300" : st[1]}">${off ? "Inactive" : st[0]}</span></td><td class="p-3">${tg(x.active, `toggleSub('${x.id}')`, !mp || x.status !== "active")}</td><td class="space-x-2 whitespace-nowrap p-3">${mp ? (x.status === "pending" ? btn("bg-green-600", `confirmSub('${x.id}')`, "✓ Confirm Payment") + btn("bg-red-600", `rejectSub('${x.id}')`, "✕ Reject") : x.status === "active" ? btn("bg-red-600", `rejectSub('${x.id}')`, "✕ Reject") : btn("bg-green-600", `confirmSub('${x.id}')`, "✓ Confirm")) : "—"}</td></tr>`; }).join("")}</tbody></table>${vis.length ? "" : '<p class="p-6 text-center text-white/40">No subscriptions yet.</p>'}</div>${pager(SB, pages, "SB", "drawSubs", rows.length, s0, N)}`;
+  const q = $("#sq"); if (q) q.oninput = (e) => { SB.q = e.target.value; SB.p = 1; const p = e.target.selectionStart; drawSubs(); const n = $("#sq"); n.focus(); n.setSelectionRange(p, p); };
+}
+async function confirmSub(id) {
+  const s = SB.list.find(x => x.id === id), now = new Date().toISOString();
+  const { error } = await db.from("subscriptions").update({ status: "active", active: true, confirmed_by: EMAIL, confirmed_at: now }).eq("id", id); if (error) return toast(error.message, 1);
+  const { data: ex } = await db.from("projects").select("id").eq("subscription_id", id).maybeSingle();
+  if (!ex) await db.from("projects").insert({ subscription_id: id, client_name: s.client_name, client_email: s.client_email, client_phone: s.client_phone, package: s.package, status: "pending", progress: 0, milestones: MILES.map(([n, p], i) => ({ name: n, pct: p, status: i === 0 ? "done" : "pending", at: i === 0 ? now : null })), est_delivery: new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10) });
+  log("confirmed payment", s.client_email);
+  const sent = await mailClient(s.client_email, s.client_name, "Payment confirmed – your build has started", "We have confirmed your M-Pesa payment (" + (s.mpesa_code || "") + "). Your project is now 0% done and we are starting on your design. We will email you as it progresses.");
+  toast(sent ? "Payment confirmed. Client emailed." : "Payment confirmed. Email not sent (check EmailJS)."); pgSubs();
+}
+async function rejectSub(id) { const s = SB.list.find(x => x.id === id); const { error } = await db.from("subscriptions").update({ status: "rejected", active: false }).eq("id", id); if (error) return toast(error.message, 1); log("rejected payment", s.client_email); toast("Payment rejected"); pgSubs(); }
+function toggleSub(id) {
+  const s = SB.list.find(x => x.id === id); if (!s.active) return setSubActive(id, true);
+  modal(`<h3 class="text-xl font-bold">Deactivate ${esc(s.client_name)}?</h3><p class="mt-2 text-white/60">Their subscription will be switched off.</p><div class="mt-6 flex justify-end gap-3">${cancelBtn}<button onclick="setSubActive('${id}',false)" class="rounded-lg bg-red-600 px-5 py-2.5 font-semibold">Deactivate</button></div>`);
+}
+async function setSubActive(id, on) { modal(); const s = SB.list.find(x => x.id === id); const { error } = await db.from("subscriptions").update({ active: on }).eq("id", id); if (error) return toast(error.message, 1); log((on ? "activated" : "deactivated") + " client", s.client_email); pgSubs(); }
+function addSubModal() {
+  modal(`<div class="flex items-center justify-between"><h3 class="text-xl font-bold">Add Subscription</h3><button onclick="modal()" aria-label="Close" class="text-xl">✕</button></div><form onsubmit="addSub(event)" class="mt-4 space-y-3">
+  <input name="nm" required placeholder="Client name" class="${dinp}"><input name="email" type="email" required placeholder="Client email" class="${dinp}"><input name="phone" placeholder="Phone (07…)" class="${dinp}">
+  <select name="pkg" class="${dinp}">${SB.pk.map(p => `<option value="${esc(p.title)}" data-price="${esc(p.price)}">${esc(p.title)} (KES ${esc(p.price)})</option>`).join("")}</select>
+  <input name="code" required placeholder="M-Pesa code e.g. QGH9F2K8L1" class="${dinp}"><input name="amount" required placeholder="Amount paid (KES)" class="${dinp}">
+  <div class="flex justify-end gap-3">${cancelBtn}<button class="rounded-lg bg-[#0A66FF] px-5 py-2.5 font-semibold">Add Subscription</button></div></form>`);
+}
+async function addSub(e) { e.preventDefault(); const f = e.target; const { error } = await db.from("subscriptions").insert({ client_name: f.nm.value.trim(), client_email: f.email.value.trim().toLowerCase(), client_phone: f.phone.value.trim(), package: f.pkg.value, mpesa_code: f.code.value.trim().toUpperCase(), amount: f.amount.value.trim() }); if (error) return toast(error.message, 1); log("added subscription", f.email.value); modal(); toast("Subscription added"); pgSubs(); }
+
+// ================= PAYMENT, CLIENT PORTAL, PROJECTS, CHAT =================
+var PKGS;
+$("#links").insertAdjacentHTML("beforeend", '<a href="#/portal" class="text-[15px] font-semibold text-brand">Track Project</a>');
+$("#drawer").insertAdjacentHTML("afterbegin", '<a href="#/portal" class="block py-3 font-semibold text-brand">Track Project</a>');
+$("#flinks").insertAdjacentHTML("beforeend", '<a href="#/portal">Track Project</a>');
+
+// ---- Public: pay for a package (manual M-Pesa confirmation) ----
+function openPay(i) {
+  const p = PKGS[i];
+  $("#paymodal").innerHTML = `<div class="fixed inset-0 z-[70] grid place-items-center overflow-y-auto bg-black/80 p-4"><div class="w-full max-w-md rounded-2xl border border-brand/50 bg-[#0d0e12] p-6 shadow-[0_0_60px_-10px_#0A66FF]"><div class="flex items-start justify-between"><div><h3 class="text-2xl font-bold">${esc(p.title)} package</h3><p class="text-white/60">KES ${esc(p.price)} · ${esc(p.delivery_time)}</p></div><button onclick="closePay()" aria-label="Close" class="text-2xl">✕</button></div>
+  <ol class="mt-4 space-y-1 rounded-xl bg-white/5 p-4 text-sm text-white/80"><li>1. Open <b>M-Pesa → Lipa na M-Pesa → Buy Goods</b></li><li>2. Till number: <b class="text-brand">${esc(MPESA_TILL)}</b> (FlexCode)</li><li>3. Amount: <b>KES ${esc(p.price)}</b></li><li>4. Enter your M-Pesa confirmation code below</li></ol>
+  <form onsubmit="submitPay(event,${i})" class="mt-4 space-y-3"><input name="nm" required minlength="2" placeholder="Your full name" class="pin"><input name="email" type="email" required placeholder="you@email.com" class="pin"><input name="phone" required placeholder="0712 345 678" class="pin"><input name="code" required minlength="10" maxlength="10" pattern="[A-Za-z0-9]{10}" placeholder="M-Pesa code e.g. QGH9F2K8L1" class="pin uppercase"><p id="payerr" class="text-sm text-red-400"></p><button class="w-full rounded-lg bg-brand py-3 font-semibold">I have paid – submit</button></form>
+  <p class="mt-3 text-xs text-white/40">We check your payment by hand, usually within a few hours, then start your project.</p></div></div>`;
+}
+const closePay = () => { $("#paymodal").innerHTML = ""; };
+async function submitPay(e, i) {
+  e.preventDefault(); const f = e.target, p = PKGS[i];
+  const row = { client_name: f.nm.value.trim(), client_email: f.email.value.trim().toLowerCase(), client_phone: f.phone.value.trim(), package: p.title, mpesa_code: f.code.value.trim().toUpperCase(), amount: p.price };
+  if (row.client_phone.replace(/\D/g, "").length < 9) return ($("#payerr").textContent = "Enter a valid phone number.");
+  const { error } = await db.from("subscriptions").insert(row);
+  if (error) return ($("#payerr").textContent = /duplicate|unique/i.test(error.message) ? "That M-Pesa code was already submitted. Check it or WhatsApp us." : "Could not submit. Please try again or WhatsApp us.");
+  try { if (window.emailjs && ![EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE].some(v => !v || v.startsWith("YOUR"))) { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_ADMIN_TEMPLATE, { name: row.client_name, email: row.client_email, phone: row.client_phone, business_type: "PAYMENT – " + row.package, message: "M-Pesa " + row.mpesa_code + ", KES " + row.amount + ". Confirm it in the admin Subscriptions page.", reply_to: row.client_email }).catch(() => {}); } } catch (x) {}
+  sessionStorage.setItem("fc_pc", JSON.stringify({ email: row.client_email, phone: row.client_phone }));
+  $("#paymodal").innerHTML = `<div class="fixed inset-0 z-[70] grid place-items-center bg-black/80 p-4"><div class="w-full max-w-md rounded-2xl border border-brand/50 bg-[#0d0e12] p-8 text-center"><p class="text-5xl">✓</p><h3 class="mt-3 text-2xl font-bold">Payment submitted</h3><p class="mt-2 text-white/70">Thank you, ${esc(row.client_name)}. We will confirm your M-Pesa payment shortly and start your project. Track it any time in your portal.</p><a href="#/portal" onclick="closePay()" class="mt-6 block rounded-lg bg-brand py-3 font-semibold">Open my portal</a></div></div>`;
+}
+
+// ---- Public: client portal (#/portal) ----
+const PO = $("#portal"); let PC = null, PDATA = null, PSEL = null;
+function portalRoute() { clearInterval(window.__pt); PC = JSON.parse(sessionStorage.getItem("fc_pc") || "null"); PC ? portalLoad() : portalLogin(); }
+function portalLogin(msg) {
+  PO.innerHTML = `<div class="min-h-screen px-5 py-10 text-white" style="background:radial-gradient(60% 40% at 50% 0,rgba(10,102,255,.25),transparent),#000"><div class="mx-auto max-w-md"><a href="#home" class="text-sm text-white/60">← Back to site</a><h1 class="mt-6 text-4xl font-extrabold">Track your project</h1><p class="mt-2 text-white/60">Enter the email and phone number you used when you paid.</p>
+  <form onsubmit="portalSubmit(event)" class="mt-8 space-y-4 rounded-2xl border border-brand/40 bg-[#0d0e12] p-6 shadow-[0_0_50px_-15px_#0A66FF]"><input name="email" type="email" required placeholder="you@email.com" class="pin"><input name="phone" required placeholder="0712 345 678" class="pin"><p class="text-sm text-red-400">${esc(msg || "")}</p><button class="w-full rounded-lg bg-brand py-3 font-semibold">View my project</button></form></div></div>`;
+}
+async function portalSubmit(e) { e.preventDefault(); const f = e.target; PC = { email: f.email.value.trim(), phone: f.phone.value.trim() }; if (!(await portalFetch())) return portalLogin("We couldn't find a payment or project with those details."); sessionStorage.setItem("fc_pc", JSON.stringify(PC)); portalDraw(); window.__pt = setInterval(portalTick, 10000); }
+async function portalFetch() { const { data, error } = await db.rpc("client_portal", { p_email: PC.email, p_phone: PC.phone }); if (error || !data || (!data.projects.length && !data.payments.length)) return false; PDATA = data; PSEL = data.projects.find(p => p.id === PSEL) ? PSEL : (data.projects[0] && data.projects[0].id); return true; }
+async function portalLoad() { if (!(await portalFetch())) { sessionStorage.removeItem("fc_pc"); return portalLogin(); } portalDraw(); window.__pt = setInterval(portalTick, 10000); }
+async function portalTick() {
+  if (PO.classList.contains("hidden")) return clearInterval(window.__pt);
+  const had = PDATA.projects.length + "|" + PDATA.payments.map(x => x.status).join(); if (!(await portalFetch())) return;
+  if (PDATA.projects.length + "|" + PDATA.payments.map(x => x.status).join() !== had) return portalDraw();
+  const p = PDATA.projects.find(x => x.id === PSEL); if (p && $("#pmain")) { $("#pmain").innerHTML = portalMain(p); portalChat(); }
+}
+function portalOut() { sessionStorage.removeItem("fc_pc"); clearInterval(window.__pt); PC = null; portalLogin(); }
+function portalMain(p) {
+  const ms = p.milestones || [], S = { pending: "Pending", in_progress: "In progress", review: "In review", completed: "Completed" }, card = "rounded-2xl border border-white/10 bg-[#0d0e12] p-6";
+  return `<div class="mt-6 ${card}"><div class="flex flex-wrap items-center justify-between gap-2"><h1 class="text-3xl font-extrabold">Your ${esc(p.package)} project</h1><span class="rounded-full border border-brand px-3 py-1 text-sm text-brand">${S[p.status] || esc(p.status)}</span></div><div class="mt-5 flex justify-between"><span class="font-semibold">Overall Progress</span><b class="text-brand">${p.progress}% complete</b></div><div class="mt-2 h-4 rounded-full bg-white/10"><div class="h-full rounded-full bg-brand shadow-[0_0_20px_#0A66FF]" style="width:${p.progress}%"></div></div><p class="mt-2 text-right text-sm text-white/50">Est. delivery: ${p.est_delivery ? fmt(p.est_delivery) : "to be confirmed"} · Updated ${ago(p.updated_at)}</p></div>
+  <div class="mt-6 grid gap-6 md:grid-cols-2"><div class="${card}"><h2 class="mb-3 text-xl font-bold">Timeline</h2>${ms.map(m => `<div class="flex items-center gap-3 py-2"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs ${m.status === "done" ? "bg-green-500" : m.status === "current" ? "bg-brand" : "border border-white/30"}">${m.status === "done" ? "✓" : ""}</span><div class="flex-1"><p class="font-semibold ${m.status === "pending" ? "text-white/50" : ""}">${esc(m.name)}</p><p class="text-xs text-white/50">${m.status === "done" ? "Completed " + fmt(m.at) : m.status === "current" ? "In progress now" : "Coming up"}</p></div>${m.status === "current" ? '<span class="rounded-full border border-brand px-3 py-0.5 text-xs font-bold text-brand">CURRENT</span>' : ""}</div>`).join("")}</div>
+  <div class="${card}"><h2 class="mb-3 text-xl font-bold">Your results</h2>${p.preview_url && /^https?:\/\//i.test(p.preview_url) ? `<p class="text-white/70">Your work is ready to view.</p><a href="${esc(p.preview_url)}" target="_blank" rel="noopener" class="mt-4 block rounded-lg bg-brand py-3 text-center font-semibold">Open live preview →</a>` : '<p class="text-white/60">Your preview link will appear here as soon as the first draft is ready.</p>'}<a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener" class="mt-3 block rounded-lg border border-white/20 py-3 text-center font-semibold">Contact us on WhatsApp</a></div></div>`;
+}
+function portalDraw() {
+  const d = PDATA, p = d.projects.find(x => x.id === PSEL);
+  PO.innerHTML = `<div class="min-h-screen bg-black px-5 py-8 text-white"><div class="mx-auto max-w-5xl"><div class="flex items-center gap-3"><a href="#home" class="mr-auto text-xl font-bold">Flex<span class="text-brand">Code</span> <span class="text-sm font-normal text-white/50">Client portal</span></a><button onclick="portalOut()" class="rounded-lg border border-white/20 px-4 py-2 text-sm">Log out</button></div>
+  ${d.payments.filter(x => x.status !== "active").map(x => `<div class="mt-6 rounded-xl border p-4 text-sm ${x.status === "rejected" ? "border-red-500/50 bg-red-500/10" : "border-yellow-500/50 bg-yellow-500/10"}">${x.status === "rejected" ? "Your payment for the " + esc(x.package) + " package could not be verified. Please WhatsApp us." : "Payment for the <b>" + esc(x.package) + "</b> package (KES " + esc(x.amount) + ") is waiting for confirmation. This page updates by itself."}</div>`).join("")}
+  ${d.projects.length > 1 ? `<div class="mt-6 flex flex-wrap gap-2">${d.projects.map(x => `<button onclick="PSEL='${x.id}';portalDraw()" class="rounded-full px-4 py-1.5 text-sm ${x.id === PSEL ? "bg-brand" : "border border-white/20"}">${esc(x.package)} · ${fmt(x.updated_at)}</button>`).join("")}</div>` : ""}
+  ${p ? `<div id="pmain">${portalMain(p)}</div><div class="mt-6 rounded-2xl border border-white/10 bg-[#0d0e12]"><h2 class="border-b border-white/10 p-4 text-xl font-bold">Chat with our team</h2><div id="pthread" class="h-80 space-y-3 overflow-y-auto p-4"></div><form onsubmit="portalSend(event)" class="flex gap-2 border-t border-white/10 p-3"><input name="body" required maxlength="1000" autocomplete="off" placeholder="Type a message…" class="pin"><button class="rounded-lg bg-brand px-5 font-semibold">Send</button></form></div>` : '<p class="mt-8 text-white/60">Your project page appears here once your payment is confirmed.</p>'}</div></div>`;
+  if (p) portalChat(true);
+}
+async function portalChat(scroll) {
+  const { data } = await db.rpc("client_messages", { p_email: PC.email, p_phone: PC.phone, p_project: PSEL }), t = $("#pthread"); if (!t) return;
+  const atEnd = scroll || t.scrollHeight - t.scrollTop - t.clientHeight < 80;
+  t.innerHTML = (data || []).map(m => `<div class="flex ${m.sender === "client" ? "justify-end" : ""}"><div class="max-w-[80%] rounded-2xl px-4 py-2 ${m.sender === "client" ? "bg-brand" : "bg-white/10"}"><p class="whitespace-pre-wrap break-words text-sm">${esc(m.body)}</p><p class="mt-1 text-[10px] text-white/60">${m.sender === "client" ? "You" : esc(m.sender_name || "FlexCode")} · ${ago(m.created_at)}</p></div></div>`).join("") || '<p class="text-center text-white/40">No messages yet. Ask us anything about your project.</p>';
+  if (atEnd) t.scrollTop = t.scrollHeight;
+}
+async function portalSend(e) { e.preventDefault(); const f = e.target, body = f.body.value.trim(); if (!body) return; f.body.value = ""; const { error } = await db.rpc("client_send", { p_email: PC.email, p_phone: PC.phone, p_project: PSEL, p_body: body }); if (error) alert("Message not sent. Please try again."); portalChat(true); }
+
+// ---- Admin: projects ----
+Object.assign(IC, { projects: '<path d="M3 6h7l2 2h9v11H3z"/>' });
+const PS = { pending: ["Pending", "bg-gray-500/30 text-gray-300"], in_progress: ["In Progress", "bg-blue-500/20 text-blue-300"], review: ["In Review", "bg-yellow-500/20 text-yellow-300"], completed: ["Completed", "bg-green-500/20 text-green-400"] };
+const PKB = { Starter: "bg-slate-500/30 text-slate-200", Business: "bg-blue-500/30 text-blue-200", Premium: "bg-purple-500/30 text-purple-200" };
+const overdue = (p) => p.est_delivery && p.status !== "completed" && new Date(p.est_delivery + "T23:59:59") < new Date();
+const pbar = (n) => `<div class="h-2.5 flex-1 rounded-full bg-white/10"><div class="h-full rounded-full bg-[#0A66FF] shadow-[0_0_12px_#0A66FF]" style="width:${n}%"></div></div>`;
+let PR = { list: [], p: 1, admins: [] }, PD = null;
+async function pgProjects() { const { data } = await db.from("projects").select("*").order("created_at", { ascending: false }); PR.list = data || []; drawProjects(); }
+function drawProjects() {
+  const N = 8, L = PR.list, pages = Math.max(1, Math.ceil(L.length / N)); PR.p = Math.min(PR.p, pages); const s0 = (PR.p - 1) * N, vis = L.slice(s0, s0 + N);
+  const stat = (t, v, s, c) => `<div class="${dk} p-5"><p class="text-white/70">${t}</p><p class="mt-1 text-4xl font-bold">${v}</p><p class="text-sm ${c}">${s}</p></div>`;
+  $("#am").innerHTML = `<p class="text-white/60">Manage and track all client projects and progress in one place.</p>
+  <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">${stat("Total Projects", L.length, "all time", "text-[#4d8dff]")}${stat("In Progress", L.filter(p => p.status === "in_progress" || p.status === "review").length, "Active work", "text-white/60")}${stat("Completed", L.filter(p => p.status === "completed").length, "Delivered", "text-green-400")}${stat("Overdue", L.filter(overdue).length, "Needs attention", "text-orange-400")}</div>
+  <div class="${dk} mt-6 overflow-x-auto p-5"><div class="mb-3 flex justify-between"><h3 class="text-xl font-bold">All Projects</h3><span class="text-white/60">Showing ${vis.length} of ${L.length} projects</span></div><table class="w-full text-left text-sm"><thead class="bg-white/5 text-xs uppercase text-white/60"><tr>${["Project","Client","Package","Progress","Status","Assigned","Last updated"].map(h => `<th class="p-3">${h}</th>`).join("")}</tr></thead><tbody>${vis.map(p => { const s = PS[p.status] || PS.pending; return `<tr onclick="location.hash='#/admin/projects/${p.id}'" class="cursor-pointer border-t border-white/10 hover:bg-white/5"><td class="p-3"><b>${esc(p.client_name)}</b><p class="text-white/50">${esc(p.package)} package${overdue(p) ? ' <span class="text-orange-400">· overdue</span>' : ""}</p></td><td class="p-3">${esc(p.client_email)}</td><td class="p-3"><span class="rounded-md px-2 py-1 text-xs font-semibold ${PKB[p.package] || PKB.Starter}">${esc(p.package)}</span></td><td class="p-3"><div class="flex min-w-[160px] items-center gap-2">${pbar(p.progress)}<b class="text-[#4d8dff]">${p.progress}%</b></div></td><td class="p-3"><span class="rounded-md px-2.5 py-1 text-xs font-semibold ${s[1]}">${s[0]}</span></td><td class="p-3">${esc(p.assigned_to || "Unassigned")}</td><td class="whitespace-nowrap p-3">${ago(p.updated_at)}</td></tr>`; }).join("")}</tbody></table>${vis.length ? "" : '<p class="p-6 text-center text-white/40">No projects yet. They appear when you confirm a payment.</p>'}</div>${pager(PR, pages, "PR", "drawProjects", L.length, s0, N)}`;
+}
+async function pgProject(id) {
+  const [p, a] = await Promise.all([db.from("projects").select("*").eq("id", id).maybeSingle(), db.from("admins").select("name").eq("active", true)]); PD = p.data; PR.admins = a.data || [];
+  if (!PD) { $("#am").innerHTML = '<p class="text-white/60">Project not found. <a class="text-[#4d8dff]" href="#/admin/projects">Back to projects</a></p>'; return; } drawProject();
+}
+function drawProject() {
+  const p = PD, mp = can("manage_projects"), s = PS[p.status] || PS.pending, ms = p.milestones || [];
+  $("#am").innerHTML = `<a href="#/admin/projects" class="text-sm text-[#4d8dff]">← All projects</a>
+  <div class="${dk} mt-3 flex flex-wrap items-center gap-3 p-5"><div class="mr-auto"><h2 class="text-3xl font-bold">${esc(p.client_name)}</h2><p class="text-white/60">${esc(p.package)} package · Created ${fmt(p.created_at)} · Owner: ${esc(p.assigned_to || "Unassigned")}</p></div>${mp ? '<button onclick="advanceProject()" class="rounded-lg bg-[#0A66FF] px-5 py-3 font-semibold">+ Update Progress</button><button onclick="completeProject()" class="rounded-lg border border-[#0A66FF] px-5 py-3 font-semibold text-[#4d8dff]">Mark Complete</button>' : ""}<a href="#/admin/chat/${p.id}" class="rounded-lg bg-white/10 px-5 py-3 font-semibold">Message Client</a></div>
+  <div class="${dk} mt-4 p-5"><div class="flex justify-between"><h3 class="text-xl font-bold">Overall Progress</h3><b class="text-[#4d8dff]">${p.progress}% Complete</b></div><div class="mt-3 h-4 rounded-full bg-white/10"><div class="h-full rounded-full bg-[#0A66FF] shadow-[0_0_20px_#0A66FF]" style="width:${p.progress}%"></div></div><p class="mt-2 text-right text-sm text-white/60">Est. delivery: ${p.est_delivery ? fmt(p.est_delivery) : "Not set"}</p></div>
+  <div class="mt-4 grid gap-4 lg:grid-cols-2"><div class="space-y-4"><div class="${dk} p-5"><h3 class="mb-3 text-xl font-bold">Milestones</h3>${ms.map(m => `<div class="flex items-center gap-3 py-2"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-full text-xs ${m.status === "done" ? "bg-green-500" : m.status === "current" ? "bg-[#0A66FF]" : "border border-white/30"}">${m.status === "done" ? "✓" : ""}</span><div class="flex-1"><p class="font-semibold ${m.status === "pending" ? "text-white/50" : ""}">${esc(m.name)} <span class="text-xs text-white/40">${m.pct}%</span></p><p class="text-xs text-white/50">${m.status === "done" ? "Completed " + fmt(m.at) : m.status === "current" ? "In progress" : "Pending"}</p></div>${m.status === "current" ? '<span class="rounded-full border border-[#0A66FF] px-3 py-0.5 text-xs font-bold text-[#4d8dff]">CURRENT</span>' : ""}</div>`).join("")}</div>
+  <div class="${dk} p-5"><h3 class="mb-3 text-xl font-bold">Details &amp; notes</h3><label class="block text-sm">Assigned to<select ${mp ? "" : "disabled"} onchange="saveProj({assigned_to:this.value})" class="${dinp}"><option value="">Unassigned</option>${PR.admins.map(a => `<option ${a.name === p.assigned_to ? "selected" : ""}>${esc(a.name)}</option>`).join("")}</select></label><label class="mt-3 block text-sm">Preview / results link (the client sees this)<input ${mp ? "" : "disabled"} value="${esc(p.preview_url || "")}" placeholder="https://staging.example.com" onchange="saveProj({preview_url:this.value.trim()})" class="${dinp}"></label><label class="mt-3 block text-sm">Internal notes<textarea ${mp ? "" : "disabled"} rows="4" onchange="saveProj({notes:this.value})" class="${dinp}">${esc(p.notes || "")}</textarea></label><p id="saved" class="mt-2 text-xs text-white/40">Changes save automatically.</p></div></div>
+  <div class="${dk} p-5"><h3 class="mb-3 text-xl font-bold">Client View Preview</h3><div class="rounded-xl border border-white/10 bg-black p-5"><p class="text-sm text-white/50">${esc(p.package)} package</p><p class="mt-1 text-2xl font-bold">${p.progress}% complete</p><div class="mt-3 h-3 rounded-full bg-white/10"><div class="h-full rounded-full bg-[#0A66FF]" style="width:${p.progress}%"></div></div><span class="mt-4 inline-block rounded-md px-2.5 py-1 text-xs font-semibold ${s[1]}">${s[0]}</span><p class="mt-3 text-sm text-white/60">Est. delivery ${p.est_delivery ? fmt(p.est_delivery) : "to be confirmed"}</p>${p.preview_url && /^https?:\/\//i.test(p.preview_url) ? `<a href="${esc(p.preview_url)}" target="_blank" rel="noopener" class="mt-4 block rounded-lg bg-[#0A66FF] py-2.5 text-center font-semibold">View live preview</a>` : '<p class="mt-4 text-xs text-white/40">Add a preview link to show it here.</p>'}</div><p class="mt-3 text-xs text-white/40">Clients log in at #/portal with their email and phone.</p></div></div>
+  <div class="mt-4 flex flex-wrap justify-between gap-3 text-sm text-white/50"><span>Project ID: ${p.id.slice(0, 8).toUpperCase()}</span><span>Status: ${s[0]}</span></div>`;
+}
+async function applyProgress(ms, progress, status) {
+  const { error } = await db.from("projects").update({ milestones: ms, progress, status, updated_at: new Date().toISOString() }).eq("id", PD.id); if (error) return toast(error.message, 1);
+  Object.assign(PD, { milestones: ms, progress, status }); log("progress " + progress + "%", PD.client_email); const cur = ms.find(m => m.status === "current"), done = status === "completed";
+  const sent = await mailClient(PD.client_email, PD.client_name, done ? "Your project is complete!" : `Your project is now ${progress}% done`, done ? "Your website project is complete. Open your portal to see the final result and chat with us: " + location.origin + location.pathname + "#/portal" : `Good news: your project is now ${progress}% done${cur ? " (" + cur.name + ")" : ""}. Track it any time at ${location.origin + location.pathname}#/portal`);
+  toast(sent ? "Progress updated. Client emailed." : "Progress updated."); drawProject();
+}
+async function advanceProject() {
+  const ms = JSON.parse(JSON.stringify(PD.milestones || [])), now = new Date().toISOString(), c = ms.findIndex(m => m.status === "current"); if (c >= 0) { ms[c].status = "done"; ms[c].at = now; }
+  const n = ms.findIndex(m => m.status === "pending"); if (n >= 0) { ms[n].status = "current"; ms[n].at = now; }
+  await applyProgress(ms, n >= 0 ? ms[n].pct : 100, n < 0 ? "completed" : ms[n].name === "Testing" ? "review" : "in_progress");
+}
+async function completeProject() { if (!confirm("Mark this project complete?")) return; const now = new Date().toISOString(); await applyProgress((PD.milestones || []).map(m => ({ ...m, status: "done", at: m.at || now })), 100, "completed"); }
+async function saveProj(patch) {
+  if (patch.preview_url && !/^https?:\/\//i.test(patch.preview_url)) return toast("Link must start with https://", 1);
+  const { error } = await db.from("projects").update({ ...patch, updated_at: new Date().toISOString() }).eq("id", PD.id); if (error) return toast(error.message, 1);
+  Object.assign(PD, patch); const s = $("#saved"); if (s) s.textContent = "Saved " + new Date().toLocaleTimeString("en-KE", { hour: "2-digit", minute: "2-digit" });
+}
+
+// ---- Admin: chat with clients ----
+let CH = { list: [], all: [], sel: null, timer: null };
+async function chatLoad() { const { data } = await db.from("project_messages").select("*").order("created_at"); CH.all = data || []; }
+async function pgChat(arg) {
+  clearInterval(CH.timer); const { data } = await db.from("projects").select("id,client_name,client_email,package").order("updated_at", { ascending: false }); CH.list = data || [];
+  await chatLoad(); CH.sel = arg || CH.sel || (CH.list[0] && CH.list[0].id); drawChat();
+  CH.timer = setInterval(async () => { if (!$("#chat")) return clearInterval(CH.timer); await chatLoad(); drawChat(true); }, 6000);
+}
+const chatList = () => CH.list.map(p => { const ms = CH.all.filter(m => m.project_id === p.id), l = ms[ms.length - 1], un = ms.filter(m => m.sender === "client" && !m.read).length; return `<button onclick="selChat('${p.id}')" class="flex w-full items-center gap-3 border-b border-white/10 p-3 text-left ${p.id === CH.sel ? "bg-white/10" : "hover:bg-white/5"}"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#0A66FF]/30 font-semibold">${esc((p.client_name || "?")[0]).toUpperCase()}</span><span class="min-w-0 flex-1"><b class="block truncate">${esc(p.client_name)}</b><span class="block truncate text-xs text-white/50">${l ? esc(l.body) : esc(p.package) + " package"}</span></span>${un ? `<span class="rounded-full bg-red-500 px-2 text-xs">${un}</span>` : ""}</button>`; }).join("") || '<p class="p-4 text-white/40">No projects yet. Chats start once a payment is confirmed.</p>';
+const chatThread = () => CH.all.filter(m => m.project_id === CH.sel).map(m => `<div class="flex ${m.sender === "admin" ? "justify-end" : ""}"><div class="max-w-[80%] rounded-2xl px-4 py-2 ${m.sender === "admin" ? "bg-[#0A66FF]" : "bg-white/10"}"><p class="whitespace-pre-wrap break-words text-sm">${esc(m.body)}</p><p class="mt-1 text-[10px] text-white/60">${esc(m.sender_name || m.sender)} · ${ago(m.created_at)}</p></div></div>`).join("") || '<p class="text-center text-white/40">No messages yet. Say hello below.</p>';
+function drawChat(partial) {
+  const p = CH.list.find(x => x.id === CH.sel);
+  if (partial && $("#clist")) { $("#clist").innerHTML = chatList(); const t = $("#thread"), atEnd = t.scrollHeight - t.scrollTop - t.clientHeight < 80; t.innerHTML = chatThread(); if (atEnd) t.scrollTop = t.scrollHeight; return markRead(); }
+  $("#am").innerHTML = `<div id="chat" class="${dk} grid overflow-hidden md:grid-cols-[280px_1fr]" style="height:70vh"><div id="clist" class="overflow-y-auto border-b border-white/10 md:border-b-0 md:border-r">${chatList()}</div><div class="flex min-h-0 flex-col"><div class="border-b border-white/10 p-4"><b>${p ? esc(p.client_name) : "Select a conversation"}</b>${p ? `<span class="ml-2 text-sm text-white/50">${esc(p.client_email)} · <a class="text-[#4d8dff]" href="#/admin/projects/${p.id}">Project</a></span>` : ""}</div><div id="thread" class="flex-1 space-y-3 overflow-y-auto p-4">${chatThread()}</div>${p && can("manage_projects") ? '<form onsubmit="sendChat(event)" class="flex gap-2 border-t border-white/10 p-3"><input name="body" required maxlength="1000" autocomplete="off" placeholder="Type a reply…" class="flex-1 rounded-lg border border-white/15 bg-white/5 px-3 py-2.5 outline-none focus:border-[#0A66FF]"><button class="rounded-lg bg-[#0A66FF] px-5 font-semibold">Send</button></form>' : ""}</div></div>`;
+  const t = $("#thread"); if (t) t.scrollTop = t.scrollHeight; markRead();
+}
+const selChat = (id) => { CH.sel = id; drawChat(); };
+async function markRead() { const ids = CH.all.filter(m => m.project_id === CH.sel && m.sender === "client" && !m.read).map(m => m.id); if (!ids.length || !can("manage_projects")) return; await db.from("project_messages").update({ read: true }).in("id", ids); CH.all.forEach(m => { if (ids.includes(m.id)) m.read = true; }); if ($("#clist")) $("#clist").innerHTML = chatList(); }
+async function sendChat(e) {
+  e.preventDefault(); const f = e.target, body = f.body.value.trim(); if (!body) return; f.body.value = "";
+  const p = CH.list.find(x => x.id === CH.sel), prev = CH.all.filter(m => m.project_id === CH.sel && m.sender === "admin").pop();
+  const { data, error } = await db.from("project_messages").insert({ project_id: CH.sel, sender: "admin", sender_name: ME, body }).select().single(); if (error) return toast(error.message, 1);
+  CH.all.push(data); drawChat(true);
+  if (!prev || Date.now() - new Date(prev.created_at) > 6e5) mailClient(p.client_email, p.client_name, "New message about your project", ME + " replied: \"" + body.slice(0, 200) + "\". Reply any time in your portal: " + location.origin + location.pathname + "#/portal");
+}
+
+// ---- Count one site visit per browser session ----
+if (!location.hash.startsWith("#/admin") && !sessionStorage.fc_v) { sessionStorage.fc_v = 1; db.from("page_views").insert({ path: location.pathname }).then(() => {}); }
+addEventListener("hashchange", route); route();
+
+</script>
+</body>
+</html>
